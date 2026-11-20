@@ -187,7 +187,8 @@ export const commodities = [
     slug: 'ferrous-metals',
     name: 'Ferrous Metals',
     summary: 'One-line summary used on cards (≤ 120 characters).',
-    image: ferrousImg,                 // imported from src/assets/images
+    image: ferrousCard,                // 800×600 card image, imported from src/assets/images
+    imageWide: ferrousWide,            // 1600×700 detail-page header image
     imageAlt: 'Stacked steel beams in a scrap yard',
     overview: ['Paragraph 1', 'Paragraph 2'],
     grades: [{ name: 'Heavy Melting Scrap', code: 'HMS 1 & 2', description: '…' }],
@@ -223,6 +224,8 @@ Page copy that is not company facts:
 - `about.story`, `about.values`
 - `process` (four steps)
 - `whyUs` (four points)
+- `pageHeroes` (title, intro and wide image for the About, Commodities, Services and Contact page headers)
+- `cta` (closing banner title, text and background image)
 - `testimonials` (empty until MI-11)
 - `privacy` (sections)
 

@@ -55,8 +55,8 @@
 
 ### Phase 4: Data and imagery
 
-- [ ] Fill `company.js`, `commodities.js`, `services.js`, `content.js` and `navigation.js` with draft content
-- [ ] Source images, optimise to WebP and record them in `docs/IMAGE_CREDITS.md`
+- [x] Fill `company.js`, `commodities.js`, `services.js`, `content.js` and `navigation.js` with draft content. Industry definitions are written out; business-specific statements are marked `[TBC]` (78 items).
+- [x] Source images, optimise to WebP and record them in `docs/IMAGE_CREDITS.md`: 24 Unsplash images, optimised with `sharp`, all within the UI_UX_GUIDELINES §5 size budgets
 
 ### Phases 5–9: Pages
 
