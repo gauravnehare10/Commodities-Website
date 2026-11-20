@@ -19,7 +19,7 @@ All images are from **[Unsplash](https://unsplash.com)** under the [Unsplash Lic
   - Cards: 800×600, ≤ 120 KB
   - Wide page headers: 1600×700, ≤ 250 KB
   - Split and service images: 1000×800, ≤ 180 KB
-  - Home hero: 1200×1400, ≤ 250 KB
+  - Home hero: 1200×960 (5:4), ≤ 250 KB (re-exported from 1200×1400 when the desktop hero was made shorter)
 
 ## Images
 

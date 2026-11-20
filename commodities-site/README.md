@@ -25,6 +25,6 @@ You need Node 20 or newer (see `.nvmrc`).
 
 ## Status
 
-**Phases 1–4 (setup, design foundation, layout, data and imagery) are complete.** All routes work with the header, mobile menu and footer. Content and images are in `src/data/` and `src/assets/images/`, and pages display them from Phase 5 onwards.
+**Phases 1–5 are complete:** setup, design foundation, layout, data and imagery, and the Home page. The other pages show a temporary placeholder until Phases 6–9. Content and images are in `src/data/` and `src/assets/images/`.
 
 Business details still to be supplied appear as `[TBC]`. Search the code for `[TBC]` to find them all. Stock image credits are in [docs/IMAGE_CREDITS.md](docs/IMAGE_CREDITS.md). See [DEVELOPMENT_ROADMAP.md](docs/DEVELOPMENT_ROADMAP.md) for the remaining phases.

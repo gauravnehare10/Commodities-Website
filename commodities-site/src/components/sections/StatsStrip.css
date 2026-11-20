@@ -1,0 +1,10 @@
+/* Custom visual design only: the large copper-light figures. */
+
+.stats-strip__value {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-copper-light);
+}

@@ -1,0 +1,45 @@
+/* Custom visual design only: the large step numbers and the connecting lines.
+   Grid, spacing and text use Bootstrap classes in ProcessSteps.jsx. */
+
+.process-steps__number {
+  flex-shrink: 0;
+  min-width: 3.25rem;
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-copper);
+}
+
+/* Mobile: vertical line joining the numbers */
+@media (max-width: 767.98px) {
+  .process-steps li:not(:last-child) .process-steps__item::after {
+    content: '';
+    position: absolute;
+    left: 1.1rem;
+    top: 3rem;
+    bottom: calc(var(--bs-gutter-y) * -1 + var(--space-2));
+    width: 1px;
+    background: var(--color-line);
+  }
+}
+
+/* Desktop: thin top line with a copper accent on each step */
+@media (min-width: 992px) {
+  .process-steps__item {
+    height: 100%;
+    padding-top: var(--space-5);
+    border-top: 2px solid var(--color-line);
+  }
+
+  .process-steps__item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 48px;
+    height: 2px;
+    background: var(--color-copper);
+  }
+}

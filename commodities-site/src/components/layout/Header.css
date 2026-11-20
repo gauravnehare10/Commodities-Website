@@ -22,6 +22,17 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Home page, before scrolling: let the hero background show through */
+.site-header--over-hero {
+  background-color: transparent;
+  backdrop-filter: none;
+}
+
+.site-header--over-hero .site-header__icon-btn,
+.site-header--over-hero .site-header__toggle {
+  background: rgb(255 255 255 / 0.7);
+}
+
 .site-header__inner {
   min-height: var(--header-height);
   flex-wrap: nowrap;

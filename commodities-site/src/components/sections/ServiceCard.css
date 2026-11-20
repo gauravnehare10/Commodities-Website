@@ -1,0 +1,39 @@
+/* Custom visual design only. Layout, spacing and colours use Bootstrap classes in ServiceCard.jsx. */
+
+.service-card {
+  transition:
+    box-shadow var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Icon circle: fixed size; colours swap on hover (Bootstrap utilities can't change on parent hover) */
+.service-card__icon {
+  width: 56px;
+  height: 56px;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.service-card:hover .service-card__icon {
+  --bs-light-rgb: 156, 79, 37; /* bg-light becomes copper */
+  --bs-primary-rgb: 255, 255, 255; /* text-primary becomes white */
+}
+
+/* Keyboard focus: ring around the whole card */
+.service-card__link:focus-visible {
+  outline: none;
+}
+
+.service-card:has(.service-card__link:focus-visible) {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 3px;
+}

@@ -12,6 +12,9 @@
   --bs-primary-text-emphasis: var(--color-copper-dark);
   --bs-primary-bg-subtle: #f6e9df;
   --bs-primary-border-subtle: var(--color-copper-light);
+  /* .text-secondary = graphite (secondary body text); .text-body-secondary = slate (muted meta text) */
+  --bs-secondary: var(--color-graphite);
+  --bs-secondary-rgb: 46, 51, 56;
   --bs-dark: var(--color-ink);
   --bs-dark-rgb: 20, 23, 26;
   --bs-light: var(--color-sand);

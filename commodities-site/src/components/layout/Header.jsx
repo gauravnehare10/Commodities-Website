@@ -40,6 +40,15 @@ export default function Header() {
 
   const tel = telHref(company.phone);
   const closeMenu = () => setMenuOpen(false);
+  // On Home, the header is transparent over the hero until the page scrolls.
+  const overHero = pathname === '/' && !scrolled;
+  const headerClass = [
+    'site-header',
+    scrolled && 'site-header--scrolled',
+    overHero && 'site-header--over-hero',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <Navbar
@@ -49,7 +58,7 @@ export default function Header() {
       sticky="top"
       expanded={menuOpen}
       onToggle={setMenuOpen}
-      className={`site-header${scrolled ? ' site-header--scrolled' : ''}`}
+      className={headerClass}
     >
       <Container className="site-header__inner">
         <Navbar.Brand as={Link} to="/" className="site-header__brand" aria-label="Home">

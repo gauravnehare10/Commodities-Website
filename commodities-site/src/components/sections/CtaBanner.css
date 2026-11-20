@@ -1,0 +1,32 @@
+/* Custom visual design only: faint background image, generous fluid padding, phone link hover.
+   Layout and colours use Bootstrap classes in CtaBanner.jsx. */
+
+.cta-banner__bg {
+  opacity: 0.15; /* Bootstrap's opacity utilities stop at 25% */
+}
+
+.cta-banner__inner {
+  padding: clamp(var(--space-7), 6vw, var(--space-9)) clamp(var(--space-5), 5vw, var(--space-9));
+}
+
+.cta-banner__inner--compact {
+  padding-block: clamp(var(--space-6), 4vw, var(--space-7));
+}
+
+.cta-banner__text {
+  max-width: 36rem;
+}
+
+.cta-banner__phone {
+  min-height: 44px;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+a.cta-banner__phone:hover {
+  color: var(--color-copper-light);
+}
+
+.cta-banner :focus-visible {
+  outline-color: var(--color-copper-light);
+}

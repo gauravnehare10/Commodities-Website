@@ -22,6 +22,15 @@
   color: var(--color-copper);
 }
 
+/* "View grades →" style hint inside clickable cards: the arrow nudges right on hover */
+.card-arrow svg {
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.card:hover .card-arrow svg {
+  transform: translateX(3px);
+}
+
 /* Readable prose block */
 .prose {
   max-width: var(--measure);

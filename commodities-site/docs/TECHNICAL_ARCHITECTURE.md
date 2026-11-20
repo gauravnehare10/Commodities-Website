@@ -66,7 +66,7 @@ commodities-site/
 │   │   └── navigation.js
 │   ├── components/
 │   │   ├── layout/              # Layout, Header, Footer, Logo, ScrollToTop, Seo
-│   │   ├── ui/                  # Button (wraps react-bootstrap Button), Section, SectionHeading
+│   │   ├── ui/                  # Button (wraps react-bootstrap Button), Section, SectionHeading, Icon (name → lucide icon)
 │   │   └── sections/            # Hero, PageHero, CommodityCard, ServiceCard, ServiceBlock,
 │   │                            # SplitFeature, FeatureGrid, ProcessSteps, GradeList,
 │   │                            # AcceptanceLists, TrustBar, StatsStrip, Testimonial,
@@ -119,7 +119,9 @@ commodities-site/
 - **Load order** (in `main.jsx`): `bootstrap/dist/css/bootstrap.min.css` → fonts → `variables.css` → `theme.css` → `base.css` → `utilities.css` → component CSS. Later files win, so our styles override Bootstrap without `!important`.
 - **`variables.css`** holds every design token: colours, fonts, type scale, spacing, radius and shadows.
 - **`theme.css`** applies the tokens to Bootstrap. It overrides the root `--bs-*` variables (primary colour, body font, text and link colours, border radius) and the component variables (`--bs-btn-*` for buttons, focus ring, form controls), and caps `.container` at 1200px.
-- **Use Bootstrap first:** use Bootstrap's grid and utility classes (`d-flex`, `gap-3`, `mb-4`, `text-center`) for layout and spacing. Write custom CSS only for the distinctive design (hero, cards, typography details).
+- **Use Bootstrap first:** use React Bootstrap components and Bootstrap utility classes for layout, spacing, colour, borders, radius, shadows and positioning (`d-flex`, `gap-3`, `p-4`, `mb-0`, `text-primary`, `bg-light`, `rounded-3`, `shadow-sm`, `w-100`, `object-fit-cover`, `position-absolute`). A component's `.css` file holds **only** what Bootstrap can't express: responsive aspect ratios, hover effects, gradients, decorative lines, line clamps and exact fluid sizes. Each component CSS file starts with a comment saying so.
+- **Theme-mapped utilities** (set in `theme.css`): `text-primary` and `btn-primary` are copper, `text-secondary` is graphite, `text-body-secondary` is slate, `bg-light` is sand, and `bg-dark` and `text-dark` are ink.
+- **Never fight Bootstrap's `!important` utilities** with `!important`. Change the Bootstrap CSS variable they read instead (e.g. set `--bs-box-shadow-sm` on hover), or leave that property out of the utility classes.
 - **BEM naming** for custom component classes, so they never collide with Bootstrap's: `.commodity-card`, `.commodity-card__image`.
 - **Mobile-first**, using Bootstrap breakpoints in media queries: `576px`, `768px`, `992px`, `1200px`, `1400px`.
 - **No `!important`**, except where Bootstrap itself uses it (its utility classes) and in the reduced-motion rule below.

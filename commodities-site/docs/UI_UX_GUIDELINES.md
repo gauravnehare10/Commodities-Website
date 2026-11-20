@@ -104,7 +104,7 @@ Imagery carries the premium feel, so it must be good.
 | Style | Natural light, rich detail, slightly warm and consistent grading. No cartoon graphics and no clichéd green-leaf "eco" imagery. |
 | Treatment | Rounded corners (`--radius-lg`). Hero and page-header images may use a dark gradient overlay so white text stays legible (at least 4.5:1). |
 | Format | WebP. Hero 1600–1920px wide and under 250 KB. Cards 800px wide and under 120 KB. Split images 1200px wide and under 180 KB. |
-| Aspect ratios | Hero 16:10 or 4:5 (mobile crop via `object-position`). Cards 4:3. Split sections 5:4. |
+| Aspect ratios | **Home hero:** 4:3 on mobile, 16:10 on tablet, 1:1 on small laptops (992–1199px) and 5:4 from 1200px, so the image roughly matches the height of the headline column and the hero fits on one laptop screen. **Cards:** 4:3. **Split sections:** 5:4. **Page headers:** 1600×700 wide crops. |
 | Loading | Hero: `loading="eager"` and `fetchpriority="high"`. All others: `loading="lazy"`. Always set `width` and `height`. |
 | Alt text | Describe the material or activity ("Bales of cardboard stacked in a warehouse"). Purely decorative images use `alt=""`. |
 

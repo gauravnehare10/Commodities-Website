@@ -70,6 +70,16 @@ Build each page from its blueprint in WEBSITE_STRUCTURE §4, reusing components.
 - [ ] Images have alt text, dimensions and lazy loading (except the hero)
 - [ ] No console errors
 
+**Progress**
+
+| Phase | Page | Status |
+|---|---|---|
+| 5 | Home (P-01) | ✅ Done: all 10 sections; header transparent over the hero; checked at 320–1440px |
+| 6 | Commodities (P-03, P-04) | Not started |
+| 7 | Services (P-05), About (P-02) | Not started |
+| 8 | Contact (P-06) | Not started |
+| 9 | Privacy (P-07), 404 (P-08 ✅ done in Phase 3), SEO files | Not started |
+
 ### Phase 10: QA
 
 Run the checklist in §5 and fix any issues.
