@@ -1,0 +1,232 @@
+/* ---------- Header bar ---------- */
+.site-header {
+  --bs-navbar-padding-y: 0;
+  --bs-navbar-color: var(--color-graphite);
+  --bs-navbar-hover-color: var(--color-copper);
+  --bs-navbar-active-color: var(--color-ink);
+  --bs-navbar-nav-link-padding-x: var(--space-4);
+  --bs-navbar-toggler-border-color: var(--color-line);
+  --bs-navbar-toggler-border-radius: var(--radius-sm);
+  --bs-navbar-toggler-focus-width: 0.2rem;
+  min-height: var(--header-height);
+  background-color: rgb(255 255 255 / 0.96);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid transparent;
+  transition:
+    box-shadow var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.site-header--scrolled {
+  border-bottom-color: var(--color-line);
+  box-shadow: var(--shadow-sm);
+}
+
+.site-header__inner {
+  min-height: var(--header-height);
+  flex-wrap: nowrap;
+  gap: var(--space-4);
+}
+
+.site-header__brand {
+  /* flex removes inline baseline space so the logo centres with the buttons */
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-right: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* ---------- Mobile / tablet quick actions ---------- */
+.site-header__mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: none;
+}
+
+.site-header__icon-btn,
+.site-header__toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  background: var(--color-white);
+}
+
+.site-header__icon-btn:hover {
+  color: var(--color-copper);
+  border-color: var(--color-copper);
+}
+
+.site-header__toggle .navbar-toggler-icon {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.site-header__toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgb(156 79 37 / 0.35);
+}
+
+/* ---------- Navigation links ---------- */
+.site-nav__link {
+  position: relative;
+  font-weight: 500;
+}
+
+/* ---------- Phone + CTA ---------- */
+.site-header__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.site-header__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.site-header__phone:hover {
+  color: var(--color-copper);
+}
+
+/* ================= Mobile & tablet menu (< 992px) ================= */
+@media (max-width: 991.98px) {
+  /* Full-screen on phones, 400px panel on tablets. Link colours via Bootstrap navbar variables. */
+  .site-menu {
+    --bs-offcanvas-width: 400px;
+    --bs-navbar-color: var(--color-white);
+    --bs-navbar-hover-color: var(--color-copper-light);
+    --bs-navbar-active-color: var(--color-copper-light);
+  }
+
+  .site-menu__header {
+    min-height: var(--header-height);
+    padding: var(--space-3) var(--container-padding);
+    border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  }
+
+  .site-menu__header .btn-close {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    margin: 0 calc(var(--space-2) * -1) 0 auto;
+    order: 2;
+    background-size: 1rem;
+  }
+
+  .site-menu__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+    padding: var(--space-6) var(--container-padding) var(--space-7);
+  }
+
+  .site-nav {
+    gap: var(--space-1);
+  }
+
+  .site-nav__link {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .site-header__actions {
+    margin-top: auto;
+    color: var(--color-white);
+  }
+
+  .site-header__phone {
+    font-size: 1.125rem;
+  }
+
+  a.site-header__phone:hover {
+    color: var(--color-copper-light);
+  }
+
+  .site-header__cta {
+    width: 100%;
+    min-height: var(--button-height-lg);
+  }
+
+  .site-menu :focus-visible {
+    outline-color: var(--color-copper-light);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .site-menu {
+    --bs-offcanvas-width: 100%;
+  }
+}
+
+/* ================= Desktop (≥ 992px) ================= */
+@media (min-width: 992px) {
+  /* The Offcanvas renders inline here: undo the dark-panel text colour from theme.css */
+  .site-menu {
+    flex-grow: 1;
+    --bs-offcanvas-color: var(--color-ink);
+    color: var(--color-ink);
+  }
+
+  .site-menu__body {
+    flex-grow: 1;
+    align-items: center;
+    gap: var(--space-5);
+  }
+
+  .site-nav {
+    margin-inline: auto;
+    gap: var(--space-1);
+  }
+
+  .site-nav__link {
+    padding-block: var(--space-2);
+  }
+
+  /* Copper underline for the active page */
+  .site-nav__link.active::after {
+    content: '';
+    position: absolute;
+    left: var(--bs-navbar-nav-link-padding-x);
+    right: var(--bs-navbar-nav-link-padding-x);
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-copper);
+  }
+
+  .site-header__actions {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-5);
+  }
+}
+
+/* Laptop widths: tighten link spacing so everything fits on one line */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .site-header {
+    --bs-navbar-nav-link-padding-x: var(--space-3);
+  }
+
+  .site-header__phone span {
+    display: none;
+  }
+}

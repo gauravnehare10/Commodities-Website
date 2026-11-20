@@ -1,0 +1,32 @@
+/* Colours, sizes and radius come from styles/theme.css (.btn-* overrides). */
+
+.site-button__arrow {
+  flex: none;
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.site-button:hover .site-button__arrow {
+  transform: translateX(3px);
+}
+
+/* Dark sections: adapt link and outline variants */
+.section--ink .btn-link {
+  --bs-btn-color: var(--color-copper-light);
+  --bs-btn-hover-color: var(--color-white);
+  --bs-btn-active-color: var(--color-white);
+}
+
+.section--ink .btn-outline-dark {
+  --bs-btn-color: var(--color-white);
+  --bs-btn-border-color: var(--color-white);
+  --bs-btn-hover-color: var(--color-ink);
+  --bs-btn-hover-bg: var(--color-white);
+  --bs-btn-hover-border-color: var(--color-white);
+  --bs-btn-active-color: var(--color-ink);
+  --bs-btn-active-bg: var(--color-white);
+  --bs-btn-active-border-color: var(--color-white);
+}
+
+.section--ink .btn {
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgb(233 199 168 / 0.5);
+}

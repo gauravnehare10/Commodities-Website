@@ -1,0 +1,51 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.logo__mark {
+  flex: none;
+  width: 36px;
+  height: 36px;
+}
+
+.logo__mark-bg {
+  fill: var(--color-ink);
+}
+
+.logo__mark-ring {
+  stroke: var(--color-copper-light);
+}
+
+.logo__text {
+  font-family: var(--font-heading);
+  font-size: 1.1875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logo--light .logo__mark-bg {
+  fill: var(--color-white);
+}
+
+.logo--light .logo__mark-ring {
+  stroke: var(--color-copper);
+}
+
+.logo--light .logo__text {
+  color: var(--color-white);
+}
+
+/* Very small phones: keep the logo compact so the menu buttons always fit */
+@media (max-width: 359.98px) {
+  .logo__text {
+    font-size: 1.0625rem;
+  }
+}

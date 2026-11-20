@@ -1,0 +1,140 @@
+/*
+ * Base styles on top of Bootstrap Reboot (docs/UI_UX_GUIDELINES.md §3, §7, §8).
+ * Reboot already handles box-sizing, margins, and form and font normalisation.
+ */
+
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+  /* The closed Offcanvas menu waits just off-screen to the right; without this, touch
+     browsers widen the page to include it, causing zoom-out and sideways scrolling. */
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  /* Safety net: never allow sideways scrolling on any device (UI_UX_GUIDELINES §9.1 rule 2) */
+  overflow-x: clip;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+/* ---------- Typography ---------- */
+/* Spacing between text blocks is set by components (gap / .prose), not default margins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* ---------- Focus (Bootstrap buttons and inputs use their own ring) ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-copper);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Main region receives focus from the skip link; no visible ring needed on the whole page */
+.site-main:focus {
+  outline: none;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 1100;
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-ink);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  color: var(--color-white);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background: var(--color-copper-light);
+  color: var(--color-ink);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

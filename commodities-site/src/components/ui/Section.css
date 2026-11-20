@@ -1,0 +1,38 @@
+.section {
+  padding-block: var(--section-padding);
+}
+
+.section--compact {
+  padding-block: var(--section-padding-compact);
+}
+
+.section--white {
+  background-color: var(--color-white);
+}
+
+.section--sand {
+  background-color: var(--color-sand);
+}
+
+.section--ink {
+  background-color: var(--color-ink);
+  color: var(--color-white);
+}
+
+/* Colour adjustments inside dark sections */
+.section--ink .eyebrow {
+  color: var(--color-copper-light);
+}
+
+.section--ink .lead,
+.section--ink p {
+  color: rgb(255 255 255 / 0.82);
+}
+
+.section--ink a:not(.btn) {
+  color: var(--color-copper-light);
+}
+
+.section--ink :focus-visible {
+  outline-color: var(--color-copper-light);
+}

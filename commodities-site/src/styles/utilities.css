@@ -1,0 +1,32 @@
+/*
+ * Project helpers. Bootstrap utilities (spacing, flex, display, .visually-hidden…) cover everything else.
+ */
+
+/* Intro paragraph (overrides Bootstrap's light-weight .lead) */
+.lead {
+  font-size: var(--fs-lead);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--color-graphite);
+  max-width: var(--measure);
+}
+
+/* Section label above headings (signature element) */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-copper);
+}
+
+/* Readable prose block */
+.prose {
+  max-width: var(--measure);
+}
+
+.prose > * + * {
+  margin-top: var(--space-4);
+}

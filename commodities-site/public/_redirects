@@ -1,0 +1,2 @@
+# Netlify SPA fallback: serve index.html for every route (docs/TECHNICAL_ARCHITECTURE.md §5)
+/*    /index.html   200

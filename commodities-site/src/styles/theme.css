@@ -1,0 +1,188 @@
+/*
+ * Bootstrap theme: applies our design tokens (variables.css) to Bootstrap 5.3
+ * by overriding its CSS custom properties. No Sass required.
+ * docs/TECHNICAL_ARCHITECTURE.md §6 · docs/UI_UX_GUIDELINES.md §2–6
+ */
+
+/* ---------- Global Bootstrap variables ---------- */
+:root {
+  /* Brand colours */
+  --bs-primary: var(--color-copper);
+  --bs-primary-rgb: 156, 79, 37;
+  --bs-primary-text-emphasis: var(--color-copper-dark);
+  --bs-primary-bg-subtle: #f6e9df;
+  --bs-primary-border-subtle: var(--color-copper-light);
+  --bs-dark: var(--color-ink);
+  --bs-dark-rgb: 20, 23, 26;
+  --bs-light: var(--color-sand);
+  --bs-light-rgb: 245, 242, 236;
+  --bs-success: var(--color-success);
+  --bs-success-rgb: 31, 122, 77;
+  --bs-danger: var(--color-error);
+  --bs-danger-rgb: 180, 35, 24;
+
+  /* Typography */
+  --bs-font-sans-serif: var(--font-body);
+  --bs-body-font-family: var(--font-body);
+  --bs-body-font-size: var(--fs-body);
+  --bs-body-line-height: var(--lh-body);
+  --bs-body-color: var(--color-ink);
+  --bs-body-color-rgb: 20, 23, 26;
+  --bs-body-bg: var(--color-white);
+  --bs-heading-color: inherit;
+  --bs-secondary-color: var(--color-slate);
+  --bs-emphasis-color: var(--color-ink);
+
+  /* Links */
+  --bs-link-color: var(--color-copper);
+  --bs-link-color-rgb: 156, 79, 37;
+  --bs-link-hover-color: var(--color-copper-dark);
+  --bs-link-hover-color-rgb: 126, 63, 29;
+
+  /* Borders and radius */
+  --bs-border-color: var(--color-line);
+  --bs-border-radius: var(--radius-md);
+  --bs-border-radius-sm: var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-lg);
+  --bs-border-radius-pill: var(--radius-pill);
+
+  /* Focus ring and form validation */
+  --bs-focus-ring-color: rgb(156 79 37 / 0.35);
+  --bs-form-invalid-color: var(--color-error);
+  --bs-form-invalid-border-color: var(--color-error);
+  --bs-form-valid-color: var(--color-success);
+  --bs-form-valid-border-color: var(--color-success);
+}
+
+/* ---------- Container: 1200px max, generous side padding ---------- */
+.container {
+  padding-inline: var(--container-padding);
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: calc(var(--container-max) + 2 * var(--container-padding));
+  }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  --bs-btn-font-family: var(--font-body);
+  --bs-btn-font-weight: 600;
+  --bs-btn-font-size: var(--fs-body);
+  --bs-btn-line-height: 1.2;
+  --bs-btn-padding-x: var(--space-5);
+  --bs-btn-padding-y: var(--space-2);
+  --bs-btn-border-width: 1.5px;
+  --bs-btn-border-radius: var(--radius-md);
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgb(156 79 37 / 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--button-height);
+  max-width: 100%;
+  /* Labels may wrap on narrow phones instead of overflowing (UI_UX_GUIDELINES §9.1 rule 2) */
+  white-space: normal;
+  text-align: center;
+}
+
+.btn-lg {
+  --bs-btn-padding-x: var(--space-6);
+  --bs-btn-font-size: 1.0625rem;
+  --bs-btn-border-radius: var(--radius-md);
+  min-height: var(--button-height-lg);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--color-white);
+  --bs-btn-bg: var(--color-copper);
+  --bs-btn-border-color: var(--color-copper);
+  --bs-btn-hover-color: var(--color-white);
+  --bs-btn-hover-bg: var(--color-copper-dark);
+  --bs-btn-hover-border-color: var(--color-copper-dark);
+  --bs-btn-active-color: var(--color-white);
+  --bs-btn-active-bg: var(--color-copper-dark);
+  --bs-btn-active-border-color: var(--color-copper-dark);
+  --bs-btn-disabled-color: var(--color-white);
+  --bs-btn-disabled-bg: var(--color-copper);
+  --bs-btn-disabled-border-color: var(--color-copper);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-dark {
+  --bs-btn-color: var(--color-ink);
+  --bs-btn-border-color: var(--color-ink);
+  --bs-btn-hover-color: var(--color-white);
+  --bs-btn-hover-bg: var(--color-ink);
+  --bs-btn-hover-border-color: var(--color-ink);
+  --bs-btn-active-color: var(--color-white);
+  --bs-btn-active-bg: var(--color-ink);
+  --bs-btn-active-border-color: var(--color-ink);
+}
+
+.btn-light {
+  --bs-btn-color: var(--color-ink);
+  --bs-btn-bg: var(--color-white);
+  --bs-btn-border-color: var(--color-white);
+  --bs-btn-hover-color: var(--color-ink);
+  --bs-btn-hover-bg: var(--color-sand);
+  --bs-btn-hover-border-color: var(--color-sand);
+  --bs-btn-active-bg: var(--color-sand);
+  --bs-btn-active-border-color: var(--color-sand);
+}
+
+.btn-link {
+  --bs-btn-color: var(--color-copper);
+  --bs-btn-hover-color: var(--color-copper-dark);
+  --bs-btn-active-color: var(--color-copper-dark);
+  --bs-btn-padding-x: 0;
+  min-height: 44px;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+}
+
+/* ---------- Form controls (used from Phase 8) ---------- */
+.form-label {
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.form-control,
+.form-select {
+  min-height: 52px;
+  border: 1px solid var(--color-slate);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--color-copper);
+  box-shadow: 0 0 0 0.2rem rgb(156 79 37 / 0.3);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-copper);
+  border-color: var(--color-copper);
+}
+
+/* ---------- Cards ---------- */
+.card {
+  --bs-card-border-color: var(--color-line);
+  --bs-card-border-radius: var(--radius-md);
+  --bs-card-inner-border-radius: calc(var(--radius-md) - 1px);
+}
+
+/* ---------- Offcanvas (mobile menu, Phase 3) ---------- */
+.offcanvas {
+  --bs-offcanvas-bg: var(--color-ink);
+  --bs-offcanvas-color: var(--color-white);
+}

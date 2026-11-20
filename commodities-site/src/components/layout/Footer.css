@@ -1,0 +1,122 @@
+.site-footer {
+  background-color: var(--color-ink);
+  color: rgb(255 255 255 / 0.82);
+  padding-top: clamp(var(--space-8), 8vw, var(--space-9));
+  font-size: 0.9375rem;
+}
+
+.site-footer a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--color-copper-light);
+  text-decoration: underline;
+}
+
+.site-footer :focus-visible {
+  outline-color: var(--color-copper-light);
+}
+
+.site-footer__grid {
+  padding-bottom: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.site-footer__brand {
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.site-footer__brand:hover {
+  text-decoration: none;
+}
+
+.site-footer__tagline {
+  margin-top: var(--space-4);
+  max-width: 36ch;
+}
+
+.site-footer__heading {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-copper-light);
+}
+
+.site-footer__links {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0;
+}
+
+/* Comfortable 44px touch targets on mobile and tablet */
+.site-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+@media (min-width: 992px) {
+  .site-footer__links a {
+    min-height: 36px;
+  }
+}
+
+.site-footer__contact,
+.site-footer__accreditations {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+.site-footer__accreditations {
+  margin-top: var(--space-5);
+  gap: var(--space-2);
+}
+
+.site-footer__contact li,
+.site-footer__accreditations li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.site-footer__contact svg,
+.site-footer__accreditations svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--color-copper-light);
+}
+
+.site-footer__contact a {
+  overflow-wrap: anywhere;
+}
+
+.site-footer__muted {
+  color: rgb(255 255 255 / 0.6);
+}
+
+/* ---------- Bottom bar ---------- */
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  justify-content: space-between;
+  padding-block: var(--space-5);
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  font-size: var(--fs-small);
+  color: rgb(255 255 255 / 0.7);
+}
+
+.site-footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: 0;
+}
