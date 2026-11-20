@@ -175,7 +175,8 @@ export const company = {
   accreditations: [],                  // MI-08: { name, number }
   stats: [],                           // MI-11: { value, label }
   social: [],                          // { label, url }
-  formEndpoint: '',                    // MI-12: form service URL (TECHNICAL_ARCHITECTURE §7)
+  responseTime: '[TBC]',               // MI-12: shown in the thank-you message, e.g. "one working day"
+  formEndpoint: '',                    // MI-12: 'netlify' or a Formspree URL (TECHNICAL_ARCHITECTURE §7)
 };
 ```
 

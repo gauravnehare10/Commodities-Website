@@ -77,7 +77,7 @@ Build each page from its blueprint in WEBSITE_STRUCTURE §4, reusing components.
 | 5 | Home (P-01) | ✅ Done: all 10 sections; header transparent over the hero; checked at 320–1440px |
 | 6 | Commodities (P-03, P-04) | ✅ Done: overview page and detail template for all 6 categories (PageHero, GradeList, AcceptanceLists, EnquiryPanel, compact cards); checked at 320–1440px |
 | 7 | Services (P-05), About (P-02) | ✅ Done: Services has jump links and 6 alternating blocks; About is built entirely from shared sections; anchors land below the sticky header; checked at 320–1440px |
-| 8 | Contact (P-06) | Not started |
+| 8 | Contact (P-06) | ✅ Done: enquiry form (validation, pre-fill, success and error states, Netlify and Formspree delivery tested with mocked responses) and contact details; checked at 320–1440px |
 | 9 | Privacy (P-07), 404 (P-08 ✅ done in Phase 3), SEO files | Not started |
 
 ### Phase 10: QA
@@ -87,7 +87,8 @@ Run the checklist in §5 and fix any issues.
 ### Phase 11: Launch
 
 - [ ] All launch-blocker MI items resolved, with no `[TBC]` text left (search the codebase)
-- [ ] Form endpoint configured; a live test submission reaches the business inbox
+- [ ] Form endpoint configured in `src/data/company.js` (`formEndpoint`: `'netlify'` or the Formspree URL); a live test submission reaches the business inbox
+- [ ] **If using Netlify Forms:** add a hidden static copy of the form to `index.html` (`<form name="enquiry" data-netlify="true" netlify-honeypot="_gotcha" hidden>` with an input for each field name). Netlify detects forms in the deployed HTML, and this SPA renders the real form with JavaScript.
 - [ ] Host connected to the repository; build command `npm run build`, publish directory `dist`
 - [ ] Custom domain and HTTPS active; `sitemap.xml` URLs use the real domain
 - [ ] Sitemap submitted to Google Search Console

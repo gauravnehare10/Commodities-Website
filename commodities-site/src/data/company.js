@@ -20,5 +20,12 @@ export const company = {
   accreditations: [], // MI-08: { name, number }
   stats: [], // MI-11: { value, label }
   social: [], // { label, url }
-  formEndpoint: '', // MI-12 (docs/TECHNICAL_ARCHITECTURE.md §7)
+  responseTime: '[TBC]', // MI-12, e.g. "one working day" (shown after an enquiry is sent)
+  /**
+   * Where enquiries are sent (MI-12, docs/TECHNICAL_ARCHITECTURE.md §7):
+   *   'netlify'                      → Netlify Forms (site hosted on Netlify)
+   *   'https://formspree.io/f/xxxx'  → Formspree (any host)
+   *   ''                             → not configured: logs to the console and shows success (development only)
+   */
+  formEndpoint: '',
 };

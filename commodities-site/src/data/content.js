@@ -125,6 +125,14 @@ export const cta = {
   image: servicesWide,
 };
 
+/** Enquiry form: "Enquiry type" options (docs/WEBSITE_STRUCTURE.md §4.6). */
+export const enquiryTypes = [
+  { value: 'sell', label: 'Sell material' },
+  { value: 'buy', label: 'Buy material' },
+  { value: 'collection', label: 'Collection / clearance' },
+  { value: 'general', label: 'General enquiry' },
+];
+
 /** Testimonials: empty until real quotes are supplied with permission (MI-11). Section hides when empty. */
 export const testimonials = [];
 

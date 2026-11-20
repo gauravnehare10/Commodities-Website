@@ -1,0 +1,42 @@
+/*
+ * Contact page sections (ContactDetails, EnquiryForm).
+ * Custom visual design only: layout, spacing and colours use Bootstrap classes in the .jsx files.
+ * One block per component, in alphabetical order.
+ */
+
+/* ==================== ContactDetails ==================== */
+
+/* Desktop: stays in view beside the long form (below the sticky header) */
+@media (min-width: 992px) {
+  .contact-details {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-5));
+  }
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+}
+
+/* Opening hours table sits on the sand card */
+.contact-hours {
+  --bs-table-bg: transparent;
+}
+
+/* ==================== EnquiryForm ==================== */
+
+/* Larger tick box, aligned with the first line of the consent text */
+.enquiry-consent .form-check-input {
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.2em;
+}
+
+.enquiry-consent .form-check-label {
+  padding-left: var(--space-2);
+}
+
+.enquiry-success:focus {
+  outline: none;
+}

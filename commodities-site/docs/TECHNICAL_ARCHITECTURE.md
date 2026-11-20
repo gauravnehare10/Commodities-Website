@@ -73,7 +73,7 @@ commodities-site/
 │   │       ├── home/            #   Hero, StatsStrip, Testimonial + home.css
 │   │       ├── commodities/     #   GradeList, AcceptanceLists, EnquiryPanel + commodities.css
 │   │       ├── services/        #   AnchorNav + services.css (service blocks reuse shared/SplitFeature)
-│   │       └── contact/         #   EnquiryForm, ContactDetails (Phase 8) + contact.css
+│   │       └── contact/         #   EnquiryForm, ContactDetails, enquiry.js (validation + sending) + contact.css
 │   ├── pages/                   # HomePage, AboutPage, CommoditiesPage, CommodityDetailPage,
 │   │                            # ServicesPage, ContactPage, PrivacyPage, NotFoundPage
 │   ├── hooks/
@@ -162,6 +162,9 @@ The form is a normal HTML form, enhanced with React for validation and a success
 - **Spam.** A hidden honeypot field (supported natively by both services) plus each service's built-in filtering.
 - **Pre-fill.** `useSearchParams()` reads `?commodity=` to preselect the commodity.
 - **Local development.** If no endpoint is configured, the form logs the data to the console and shows the success state.
+- **Implementation.** `formEndpoint` in `company.js` is `'netlify'` (POST to `/` as URL-encoded data, with the hidden `form-name` field) or a Formspree URL (POST as `FormData`, with `Accept: application/json`). The honeypot field is named `_gotcha`: Formspree recognises it natively, and Netlify reads it via `netlify-honeypot="_gotcha"`. Validation and sending live in `sections/contact/enquiry.js`, separate from the UI.
+- **Netlify detection.** Netlify detects forms in the deployed HTML, so a hidden static copy of the form goes in `index.html` at launch (DEVELOPMENT_ROADMAP Phase 11).
+- **Accessibility.** Each field has a `<label>`. Invalid fields get Bootstrap's `is-invalid` styling, `aria-invalid="true"`, and `aria-describedby` pointing to the error text. Focus moves to the first invalid field, the error count is announced in an `aria-live` region, and the thank-you message receives focus and has `role="status"`.
 
 ## 8. Images
 
