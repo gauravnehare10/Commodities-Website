@@ -116,7 +116,7 @@ Each table lists the page's sections from top to bottom, with the component and 
 |---|---|---|
 | 1 | Page header | `PageHero` |
 | 2 | Quick links to each service (anchor chips) | `AnchorNav` |
-| 3 | One block per service, alternating image left and right: title, description, "What's included" list, button | `ServiceBlock` × 6 |
+| 3 | One block per service, alternating image left and right: title, description, "What's included" list, button | `SplitFeature` × 6 (shared) |
 | 4 | How it works | `ProcessSteps` |
 | 5 | Call-to-action banner | `CtaBanner` |
 

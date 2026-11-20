@@ -72,7 +72,7 @@ commodities-site/
 │   │       ├── shared/          #   PageHero, CtaBanner, SplitFeature, FeatureGrid, ProcessSteps, TrustBar + shared.css
 │   │       ├── home/            #   Hero, StatsStrip, Testimonial + home.css
 │   │       ├── commodities/     #   GradeList, AcceptanceLists, EnquiryPanel + commodities.css
-│   │       ├── services/        #   ServiceBlock, AnchorNav (Phase 7) + services.css
+│   │       ├── services/        #   AnchorNav + services.css (service blocks reuse shared/SplitFeature)
 │   │       └── contact/         #   EnquiryForm, ContactDetails (Phase 8) + contact.css
 │   ├── pages/                   # HomePage, AboutPage, CommoditiesPage, CommodityDetailPage,
 │   │                            # ServicesPage, ContactPage, PrivacyPage, NotFoundPage

@@ -11,6 +11,7 @@ import './shared.css';
  * @param {boolean} [reverse] Put the image on the right on desktop
  * @param {string[]} [paragraphs]
  * @param {string[]} [points] Optional checklist
+ * @param {string} [pointsTitle] Optional heading above the checklist (e.g. "What's included")
  * @param {React.ReactNode} [action] Optional button
  */
 export default function SplitFeature({
@@ -19,6 +20,7 @@ export default function SplitFeature({
   title,
   paragraphs = [],
   points = [],
+  pointsTitle,
   action,
   image,
   imageAlt,
@@ -49,6 +51,9 @@ export default function SplitFeature({
               {p}
             </p>
           ))}
+          {pointsTitle && points.length > 0 && (
+            <h3 className="fs-6 fw-bold mt-2 mb-0">{pointsTitle}</h3>
+          )}
           {points.length > 0 && (
             <ul className="list-unstyled d-grid gap-3 mt-2 mb-0">
               {points.map((point) => (

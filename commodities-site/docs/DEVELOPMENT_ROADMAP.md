@@ -76,7 +76,7 @@ Build each page from its blueprint in WEBSITE_STRUCTURE §4, reusing components.
 |---|---|---|
 | 5 | Home (P-01) | ✅ Done: all 10 sections; header transparent over the hero; checked at 320–1440px |
 | 6 | Commodities (P-03, P-04) | ✅ Done: overview page and detail template for all 6 categories (PageHero, GradeList, AcceptanceLists, EnquiryPanel, compact cards); checked at 320–1440px |
-| 7 | Services (P-05), About (P-02) | Not started |
+| 7 | Services (P-05), About (P-02) | ✅ Done: Services has jump links and 6 alternating blocks; About is built entirely from shared sections; anchors land below the sticky header; checked at 320–1440px |
 | 8 | Contact (P-06) | Not started |
 | 9 | Privacy (P-07), 404 (P-08 ✅ done in Phase 3), SEO files | Not started |
 

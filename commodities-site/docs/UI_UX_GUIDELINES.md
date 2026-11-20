@@ -135,7 +135,7 @@ Components are built on **React Bootstrap** and themed to this guide. Bootstrap 
 | **SectionHeading** | Eyebrow, H2 and an optional lead paragraph. Left-aligned by default; centred variant for grids. |
 | **CommodityCard** | 4:3 image on top (zooms to 1.04 on hover), a title, a two-line summary and a "View grades →" link. The whole card is clickable. White background with `--radius-md` and `--shadow-sm`, rising to `--shadow-md` on hover. The `compact` variant is a small image plus title. |
 | **ServiceCard** | Icon in a sand-coloured circle, title, summary and arrow link. No image. |
-| **ServiceBlock** | Split layout with a 5:4 image, eyebrow number (`01`–`06`), title, paragraphs, a "What's included" checklist (copper ticks) and a button. |
+| **Service block** (`SplitFeature`) | Services page blocks reuse `SplitFeature`: a 5:4 image, eyebrow (`Service 01`–`06`), title, paragraphs, a "What's included" heading and checklist (copper ticks), and a "Request this service" button. Image side and background alternate. |
 | **SplitFeature** | Image and text side by side, with an optional bullet list and button. |
 | **FeatureGrid** | Two to four columns of icon, title and text. |
 | **ProcessSteps** | Four numbered steps. Large copper numbers (`01`) in Manrope 800, with a thin connecting line on desktop. Vertical on mobile. |
@@ -144,7 +144,7 @@ Components are built on **React Bootstrap** and themed to this guide. Bootstrap 
 | **TrustBar** | A row of accreditation names and numbers with a shield icon. Hidden when there is no data. |
 | **StatsStrip** | Ink background with three or four large numbers (Manrope 800, copper-light) and labels. Hidden when there is no data. |
 | **Testimonial** | Large quote in Manrope 600, with the author and company below and a copper quotation-mark accent. Hidden when there is no data. |
-| **AnchorNav** | A row of pill-shaped links (`--radius-sm`, 1px border) that scrolls sideways on mobile. Jumps to the service sections. |
+| **AnchorNav** | A row of pill-shaped links (Bootstrap `btn btn-outline-dark rounded-pill`, 44px tall) below the page header. Jumps to the service sections. Below 992px it is one line that scrolls sideways, with a fade on the right edge to show there are more links; on desktop it wraps. |
 | **EnquiryPanel** | A small sticky side card on commodity pages: "Interested in this material?", a "Get a Quote" button and the phone number. Sand background. |
 | **CtaBanner** | Ink background with a subtle image overlay at 15% opacity. Heading, one line of text, a "Get a Quote" button and the phone number. Inside a rounded `--radius-lg` container. |
 | **EnquiryForm** | Bootstrap form controls, restyled: labels above fields; inputs 52px tall with a 1px `--color-slate` border, `--radius-sm` and a white background. Focus shows a copper ring instead of Bootstrap's blue. Errors use `isInvalid` with `Form.Control.Feedback` (red text below the field). Full-width submit button on mobile. |

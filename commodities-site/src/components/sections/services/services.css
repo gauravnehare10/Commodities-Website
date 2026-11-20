@@ -1,0 +1,43 @@
+/*
+ * Services page sections (AnchorNav).
+ * Custom visual design only: layout, spacing and colours use Bootstrap classes in the .jsx files.
+ * One block per component, in alphabetical order.
+ */
+
+/* ==================== AnchorNav ==================== */
+
+/* Phones and tablets: one line that scrolls sideways */
+.anchor-nav__list {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-block: 2px; /* room for the focus ring */
+}
+
+.anchor-nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fade on the right edge hints that more pills scroll into view */
+@media (max-width: 991.98px) {
+  .anchor-nav__list {
+    padding-right: var(--space-6);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+  }
+}
+
+/* Pills: 44px touch target, smaller text than standard buttons */
+.anchor-nav .btn {
+  min-height: 44px;
+  --bs-btn-font-size: var(--fs-small);
+  --bs-btn-border-width: 1px;
+  --bs-btn-border-color: var(--color-line);
+}
+
+/* Desktop: wrap onto several lines instead of scrolling */
+@media (min-width: 992px) {
+  .anchor-nav__list {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}

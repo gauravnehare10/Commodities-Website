@@ -10,6 +10,8 @@ import contactWide from '../assets/images/hero/contact-wide.webp';
 import homeHero from '../assets/images/hero/home.webp';
 import servicesWide from '../assets/images/hero/services-wide.webp';
 import aboutStory from '../assets/images/about/story.webp';
+// About page story uses a different photo from its page header (about-wide shows the crane lorry)
+import aboutPageStory from '../assets/images/services/recycling-consultancy.webp';
 
 export const home = {
   hero: {
@@ -80,8 +82,8 @@ export const about = {
     '[TBC] Company story: founding, history and growth (MI-03).',
     '[TBC] What the business does today and who it works with (MI-04).',
   ],
-  storyImage: aboutStory,
-  storyImageAlt: 'A crane lorry loading material into a large container',
+  storyImage: aboutPageStory,
+  storyImageAlt: 'Two people in high-visibility vests inspecting a large industrial warehouse',
   values: [
     { icon: 'Handshake', title: 'Integrity', text: '[TBC] What this value means in practice.' },
     { icon: 'ShieldCheck', title: 'Compliance', text: '[TBC] What this value means in practice.' },

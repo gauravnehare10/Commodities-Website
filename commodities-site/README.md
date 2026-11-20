@@ -25,6 +25,6 @@ You need Node 20 or newer (see `.nvmrc`).
 
 ## Status
 
-**Phases 1–6 are complete:** setup, design foundation, layout, data and imagery, the Home page and the Commodities pages. About, Services, Contact and Privacy show a temporary placeholder until Phases 7–9. Content and images are in `src/data/` and `src/assets/images/`.
+**Phases 1–7 are complete:** setup, design foundation, layout, data and imagery, and the Home, Commodities, Services and About pages. Contact and Privacy show a temporary placeholder until Phases 8–9. Content and images are in `src/data/` and `src/assets/images/`.
 
 Business details still to be supplied appear as `[TBC]`. Search the code for `[TBC]` to find them all. Stock image credits are in [docs/IMAGE_CREDITS.md](docs/IMAGE_CREDITS.md). See [DEVELOPMENT_ROADMAP.md](docs/DEVELOPMENT_ROADMAP.md) for the remaining phases.
