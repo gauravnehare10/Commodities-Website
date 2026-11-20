@@ -1,7 +1,7 @@
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Section from '../ui/Section';
-import './StatsStrip.css';
+import Section from '../../ui/Section';
+import './home.css';
 
 /**
  * Key figures on a dark background (MI-11). Renders nothing until verified figures exist.

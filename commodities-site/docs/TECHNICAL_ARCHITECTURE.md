@@ -67,10 +67,13 @@ commodities-site/
 │   ├── components/
 │   │   ├── layout/              # Layout, Header, Footer, Logo, ScrollToTop, Seo
 │   │   ├── ui/                  # Button (wraps react-bootstrap Button), Section, SectionHeading, Icon (name → lucide icon)
-│   │   └── sections/            # Hero, PageHero, CommodityCard, ServiceCard, ServiceBlock,
-│   │                            # SplitFeature, FeatureGrid, ProcessSteps, GradeList,
-│   │                            # AcceptanceLists, TrustBar, StatsStrip, Testimonial,
-│   │                            # CtaBanner, AnchorNav, EnquiryForm, EnquiryPanel, ContactDetails
+│   │   ├── cards/               # CommodityCard, ServiceCard + cards.css (used on several pages)
+│   │   └── sections/            # Page sections, grouped by the page that uses them:
+│   │       ├── shared/          #   PageHero, CtaBanner, SplitFeature, FeatureGrid, ProcessSteps, TrustBar + shared.css
+│   │       ├── home/            #   Hero, StatsStrip, Testimonial + home.css
+│   │       ├── commodities/     #   GradeList, AcceptanceLists, EnquiryPanel + commodities.css
+│   │       ├── services/        #   ServiceBlock, AnchorNav (Phase 7) + services.css
+│   │       └── contact/         #   EnquiryForm, ContactDetails (Phase 8) + contact.css
 │   ├── pages/                   # HomePage, AboutPage, CommoditiesPage, CommodityDetailPage,
 │   │                            # ServicesPage, ContactPage, PrivacyPage, NotFoundPage
 │   ├── hooks/
@@ -90,7 +93,12 @@ commodities-site/
 └── package.json
 ```
 
-**Component convention:** `components/sections/CommodityCard.jsx` sits next to `CommodityCard.css` and imports it. Components receive data through props. Only page components import from `src/data/`.
+**Component conventions**
+
+- **Where a section goes.** Sections used by one page go in that page's folder (`sections/home/`, `sections/commodities/`…). Sections used by two or more pages go in `sections/shared/`. If a page-specific section becomes needed elsewhere, move it to `shared/`.
+- **When to make a component.** Create one only when a block is reused, or is complex enough to deserve its own file. Simple one-off markup can stay in the page component.
+- **One stylesheet per folder.** There is one CSS file per folder (`shared.css`, `home.css`, `cards.css`…), not one per component, because Bootstrap utilities handle most styling. Each file has one labelled block per component, in alphabetical order. Every component in the folder imports the folder stylesheet; Vite includes it only once.
+- **Data flow.** Components receive data through props. Only page components import from `src/data/`. Exceptions: layout components (Header, Footer) and contact-detail sections read `company.js` directly.
 
 ## 5. Routing
 

@@ -1,0 +1,167 @@
+/*
+ * Sections shared by several pages (CtaBanner, FeatureGrid, PageHero, ProcessSteps, SplitFeature, TrustBar).
+ * Custom visual design only: layout, spacing and colours use Bootstrap classes in the .jsx files.
+ * One block per component, in alphabetical order.
+ */
+
+/* ==================== CtaBanner ==================== */
+
+.cta-banner__bg {
+  opacity: 0.15; /* Bootstrap's opacity utilities stop at 25% */
+}
+
+.cta-banner__inner {
+  padding: clamp(var(--space-7), 6vw, var(--space-9)) clamp(var(--space-5), 5vw, var(--space-9));
+}
+
+.cta-banner__inner--compact {
+  padding-block: clamp(var(--space-6), 4vw, var(--space-7));
+}
+
+.cta-banner__text {
+  max-width: 36rem;
+}
+
+.cta-banner__phone {
+  min-height: 44px;
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+a.cta-banner__phone:hover {
+  color: var(--color-copper-light);
+}
+
+.cta-banner :focus-visible {
+  outline-color: var(--color-copper-light);
+}
+
+/* ==================== FeatureGrid ==================== */
+
+.feature-grid__icon {
+  width: 56px;
+  height: 56px;
+  color: var(--color-copper-light);
+}
+
+/* ==================== PageHero ==================== */
+
+/* Dark gradient keeps white text readable on any photo (â‰¥ 4.5:1) */
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgb(20 23 26 / 0.92) 0%,
+    rgb(20 23 26 / 0.55) 60%,
+    rgb(20 23 26 / 0.35) 100%
+  );
+}
+
+.page-hero__content {
+  z-index: 1;
+  min-height: clamp(320px, 22vw + 200px, 440px);
+  padding-block: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.page-hero__intro {
+  max-width: 40rem;
+  color: rgb(255 255 255 / 0.88);
+}
+
+/* Breadcrumb on a dark background. Bootstrap defines these variables on .breadcrumb (the <ol>),
+   so they must be overridden there, not on the outer <nav>. */
+.page-hero__breadcrumb .breadcrumb {
+  --bs-breadcrumb-divider-color: rgb(255 255 255 / 0.6);
+  --bs-breadcrumb-item-active-color: rgb(255 255 255 / 0.85);
+}
+
+.page-hero__breadcrumb a {
+  color: var(--color-copper-light);
+  text-decoration: none;
+}
+
+.page-hero__breadcrumb a:hover {
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
+.page-hero :focus-visible {
+  outline-color: var(--color-copper-light);
+}
+
+/* Desktop: left-to-right gradient so the image shows more on the right */
+@media (min-width: 992px) {
+  .page-hero::after {
+    background: linear-gradient(
+      90deg,
+      rgb(20 23 26 / 0.9) 0%,
+      rgb(20 23 26 / 0.65) 50%,
+      rgb(20 23 26 / 0.3) 100%
+    );
+  }
+}
+
+/* ==================== ProcessSteps ==================== */
+
+.process-steps__number {
+  flex-shrink: 0;
+  min-width: 3.25rem;
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-copper);
+}
+
+/* Mobile: vertical line joining the numbers */
+@media (max-width: 767.98px) {
+  .process-steps li:not(:last-child) .process-steps__item::after {
+    content: '';
+    position: absolute;
+    left: 1.1rem;
+    top: 3rem;
+    bottom: calc(var(--bs-gutter-y) * -1 + var(--space-2));
+    width: 1px;
+    background: var(--color-line);
+  }
+}
+
+/* Desktop: thin top line with a copper accent on each step */
+@media (min-width: 992px) {
+  .process-steps__item {
+    height: 100%;
+    padding-top: var(--space-5);
+    border-top: 2px solid var(--color-line);
+  }
+
+  .process-steps__item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 48px;
+    height: 2px;
+    background: var(--color-copper);
+  }
+}
+
+/* ==================== SplitFeature ==================== */
+
+.split-feature__image {
+  aspect-ratio: 5 / 4;
+}
+
+/* Keep the text column at a comfortable reading width */
+.split-feature__content {
+  max-width: 34rem;
+}
+
+/* Tablet: wider, shorter image so the text stays close to the top of the screen */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .split-feature__image {
+    aspect-ratio: 16 / 9;
+  }
+}

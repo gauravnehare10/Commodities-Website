@@ -1,7 +1,0 @@
-/* Custom visual design only: icon tile size and copper-light icon colour. */
-
-.feature-grid__icon {
-  width: 56px;
-  height: 56px;
-  color: var(--color-copper-light);
-}

@@ -1,6 +1,6 @@
 import { Quote } from 'lucide-react';
-import Section from '../ui/Section';
-import './Testimonial.css';
+import Section from '../../ui/Section';
+import './home.css';
 
 /**
  * Customer quote (MI-11). Shows the first testimonial; renders nothing until

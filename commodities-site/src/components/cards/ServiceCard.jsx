@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Icon from '../ui/Icon';
-import './ServiceCard.css';
+import './cards.css';
 
 /**
  * Service card: icon, title, summary and arrow link to the service section

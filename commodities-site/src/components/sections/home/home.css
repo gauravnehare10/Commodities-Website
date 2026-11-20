@@ -1,4 +1,10 @@
-/* Custom visual design only. Layout, spacing and colours use Bootstrap classes in Hero.jsx. */
+/*
+ * Home page sections (Hero, StatsStrip, Testimonial).
+ * Custom visual design only: layout, spacing and colours use Bootstrap classes in the .jsx files.
+ * One block per component, in alphabetical order.
+ */
+
+/* ==================== Hero ==================== */
 
 .hero {
   /* Extends up behind the transparent header */
@@ -47,7 +53,7 @@
 }
 
 /* Desktop: sized to roughly match the height of the text column beside it.
-   Small laptops (992–1199px): the text column is narrow and taller, so the image is square. */
+   Small laptops (992â€“1199px): the text column is narrow and taller, so the image is square. */
 @media (min-width: 992px) {
   .hero__image {
     aspect-ratio: 1 / 1;
@@ -64,4 +70,29 @@
   .hero__image {
     aspect-ratio: 5 / 4;
   }
+}
+
+/* ==================== StatsStrip ==================== */
+
+.stats-strip__value {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 1.6rem + 2.5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-copper-light);
+}
+
+/* ==================== Testimonial ==================== */
+
+.testimonial {
+  max-width: 48rem;
+}
+
+.testimonial__quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 1rem + 1.2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 }

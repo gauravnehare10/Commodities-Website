@@ -1,14 +1,14 @@
 import { Phone } from 'lucide-react';
-import { company } from '../../data/company';
-import { cta } from '../../data/content';
-import { telHref } from '../../utils/contact';
-import Button from '../ui/Button';
-import Section from '../ui/Section';
-import './CtaBanner.css';
+import { company } from '../../../data/company';
+import { cta } from '../../../data/content';
+import { telHref } from '../../../utils/contact';
+import Button from '../../ui/Button';
+import Section from '../../ui/Section';
+import './shared.css';
 
 /**
  * Closing call to action: a rounded dark panel with a faint image (docs/UI_UX_GUIDELINES.md §6).
- * Layout uses Bootstrap utilities; CtaBanner.css holds only the custom visual details.
+ * Layout uses Bootstrap utilities; shared.css holds only the custom visual details.
  *
  * @param {string} [title] Defaults to content.js `cta.title`
  * @param {string} [text]

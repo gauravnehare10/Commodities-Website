@@ -2,15 +2,15 @@ import { Phone, ShieldCheck } from 'lucide-react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { company } from '../../data/company';
-import { telHref } from '../../utils/contact';
-import Button from '../ui/Button';
-import './Hero.css';
+import { company } from '../../../data/company';
+import { telHref } from '../../../utils/contact';
+import Button from '../../ui/Button';
+import './home.css';
 
 /**
  * Home page hero (docs/UI_UX_GUIDELINES.md §6, docs/WEBSITE_STRUCTURE.md §4.1 #1).
  * Desktop: text left, large image right. Mobile/tablet: text first, then image.
- * Layout uses Bootstrap grid and utilities; Hero.css holds only the custom visual design.
+ * Layout uses Bootstrap grid and utilities; home.css holds only the custom visual design.
  */
 export default function Hero({ eyebrow, title, lead, image, imageAlt }) {
   const tel = telHref(company.phone);

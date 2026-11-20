@@ -1,0 +1,14 @@
+/*
+ * Commodity pages sections (AcceptanceLists, EnquiryPanel, GradeList).
+ * Custom visual design only: layout, spacing and colours use Bootstrap classes in the .jsx files.
+ * One block per component, in alphabetical order.
+ */
+
+/* ==================== EnquiryPanel ==================== */
+
+@media (min-width: 992px) {
+  .enquiry-panel {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-5));
+  }
+}

@@ -1,6 +1,6 @@
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import './ProcessSteps.css';
+import './shared.css';
 
 /**
  * Numbered process steps (docs/UI_UX_GUIDELINES.md §6, §9.2), on the Bootstrap grid.

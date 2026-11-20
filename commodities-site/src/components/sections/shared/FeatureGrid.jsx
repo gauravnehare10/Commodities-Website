@@ -1,7 +1,7 @@
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Icon from '../ui/Icon';
-import './FeatureGrid.css';
+import Icon from '../../ui/Icon';
+import './shared.css';
 
 /**
  * Icon + title + text grid (docs/UI_UX_GUIDELINES.md §6), on the Bootstrap grid.

@@ -1,0 +1,56 @@
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
+import './shared.css';
+
+/**
+ * Inner-page header: full-width image, dark gradient, white title, breadcrumb and intro
+ * (docs/UI_UX_GUIDELINES.md §6). Built on React Bootstrap Container + Breadcrumb.
+ *
+ * @param {string} title Page h1
+ * @param {string} [intro]
+ * @param {string} image Wide (1600×700) image
+ * @param {{label: string, to?: string}[]} [breadcrumbs] Last item is the current page (no `to`)
+ */
+export default function PageHero({ title, intro, image, breadcrumbs = [] }) {
+  return (
+    <section
+      className="page-hero position-relative overflow-hidden bg-dark text-white"
+      aria-labelledby="page-title"
+    >
+      <img
+        src={image}
+        alt=""
+        width="1600"
+        height="700"
+        loading="eager"
+        fetchPriority="high"
+        className="page-hero__image position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+      />
+      <Container className="page-hero__content position-relative d-flex flex-column justify-content-end gap-3">
+        {breadcrumbs.length > 0 && (
+          <Breadcrumb
+            className="page-hero__breadcrumb small mb-0"
+            listProps={{ className: 'mb-0' }}
+          >
+            {breadcrumbs.map((crumb) =>
+              crumb.to ? (
+                <Breadcrumb.Item key={crumb.label} linkAs={Link} linkProps={{ to: crumb.to }}>
+                  {crumb.label}
+                </Breadcrumb.Item>
+              ) : (
+                <Breadcrumb.Item key={crumb.label} active>
+                  {crumb.label}
+                </Breadcrumb.Item>
+              ),
+            )}
+          </Breadcrumb>
+        )}
+        <h1 id="page-title" className="mb-0">
+          {title}
+        </h1>
+        {intro && <p className="page-hero__intro fs-5 mb-0">{intro}</p>}
+      </Container>
+    </section>
+  );
+}

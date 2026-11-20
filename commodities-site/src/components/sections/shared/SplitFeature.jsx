@@ -1,7 +1,7 @@
 import { Check } from 'lucide-react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import './SplitFeature.css';
+import './shared.css';
 
 /**
  * Image and text side by side (docs/UI_UX_GUIDELINES.md §6), on the Bootstrap grid.

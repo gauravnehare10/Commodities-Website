@@ -122,7 +122,8 @@ Components are built on **React Bootstrap** and themed to this guide. Bootstrap 
 | CommodityCard, ServiceCard, AcceptanceLists, ContactDetails, EnquiryPanel | `Card` |
 | EnquiryForm | `Form`, `Form.Group`, `Form.Label`, `Form.Control`, `Form.Select`, `Form.Check`, `Form.Control.Feedback`, `Alert` |
 | PageHero breadcrumb | `Breadcrumb` |
-| Section, SectionHeading, Hero, ProcessSteps, GradeList, StatsStrip, CtaBanner | Custom markup inside `Container`, `Row` and `Col` |
+| GradeList | `ListGroup` (flush) + `Badge` (pill) for grade codes |
+| Section, SectionHeading, Hero, ProcessSteps, StatsStrip, CtaBanner | Custom markup inside `Container`, `Row` and `Col` |
 
 | Component | Design notes |
 |---|---|
