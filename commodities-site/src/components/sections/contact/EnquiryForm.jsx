@@ -67,7 +67,7 @@ export default function EnquiryForm() {
       <div
         ref={successRef}
         tabIndex={-1}
-        className="enquiry-success bg-light rounded-3 p-4 p-md-5"
+        className="enquiry-success bg-light rounded-3 p-4 p-md-5 animate-in"
         role="status"
       >
         <Mail size={40} aria-hidden="true" className="text-primary mb-3" />
@@ -97,7 +97,7 @@ export default function EnquiryForm() {
       <div
         ref={successRef}
         tabIndex={-1}
-        className="enquiry-success bg-light rounded-3 p-4 p-md-5"
+        className="enquiry-success bg-light rounded-3 p-4 p-md-5 animate-in"
         role="status"
       >
         <CircleCheck size={40} aria-hidden="true" className="text-success mb-3" />

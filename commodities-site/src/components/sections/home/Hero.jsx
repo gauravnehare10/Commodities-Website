@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import { company } from '../../../data/company';
 import { telHref } from '../../../utils/contact';
 import { bannerSrcSet, HERO_SIZES } from '../../../utils/images';
+import { delay } from '../../../utils/motion';
 import Button from '../../ui/Button';
 import './home.css';
 
@@ -22,14 +23,17 @@ export default function Hero({ eyebrow, title, lead, image, imageAlt }) {
       <Container>
         <Row className="align-items-center gy-5 gx-lg-5">
           <Col lg={6} className="d-flex flex-column gap-4">
-            <p className="eyebrow mb-0">{eyebrow}</p>
-            <h1 id="hero-title" className="hero__title">
+            {/* Entrance: each line fades up in turn (styles/animations.css) */}
+            <p className="eyebrow mb-0 animate-in">{eyebrow}</p>
+            <h1 id="hero-title" className="hero__title animate-in" style={delay(90)}>
               {title}
             </h1>
-            <p className="lead mb-0">{lead}</p>
+            <p className="lead mb-0 animate-in" style={delay(180)}>
+              {lead}
+            </p>
 
             {/* Full-width stacked buttons on phones, side by side from 576px */}
-            <div className="d-grid d-sm-flex flex-wrap gap-3 mt-2">
+            <div className="d-grid d-sm-flex flex-wrap gap-3 mt-2 animate-in" style={delay(270)}>
               <Button to="/contact" size="lg" arrow>
                 Get a Quote
               </Button>
@@ -38,7 +42,10 @@ export default function Hero({ eyebrow, title, lead, image, imageAlt }) {
               </Button>
             </div>
 
-            <p className="d-flex flex-wrap align-items-center gap-2 small text-body-secondary mb-0">
+            <p
+              className="d-flex flex-wrap align-items-center gap-2 small text-body-secondary mb-0 animate-in"
+              style={delay(360)}
+            >
               <Phone size={18} aria-hidden="true" className="text-primary" />
               <span>Prefer to talk?</span>
               {tel ? (
@@ -62,10 +69,13 @@ export default function Hero({ eyebrow, title, lead, image, imageAlt }) {
                 height="960"
                 loading="eager"
                 fetchPriority="high"
-                className="hero__image w-100 object-fit-cover rounded-3 shadow"
+                className="hero__image w-100 object-fit-cover rounded-3 shadow animate-settle"
               />
               {firstAccreditation && (
-                <div className="hero__badge position-absolute d-flex align-items-center gap-3 bg-white rounded-2 shadow px-3 py-2 small">
+                <div
+                  className="hero__badge position-absolute d-flex align-items-center gap-3 bg-white rounded-2 shadow px-3 py-2 small animate-in"
+                  style={delay(600)}
+                >
                   <ShieldCheck
                     size={22}
                     aria-hidden="true"

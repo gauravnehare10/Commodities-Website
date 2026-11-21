@@ -2,6 +2,7 @@ import { CircleCheck, CircleX } from 'lucide-react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { reveal } from '../../../utils/motion';
 
 /**
  * "We accept" / "We don't accept" cards (docs/UI_UX_GUIDELINES.md §6).
@@ -18,8 +19,8 @@ export default function AcceptanceLists({ accepted = [], notAccepted = [] }) {
 
   return (
     <Row className="g-4">
-      {lists.map(({ title, items, Icon, tone }) => (
-        <Col key={title} xs={12} md={6}>
+      {lists.map(({ title, items, Icon, tone }, i) => (
+        <Col key={title} xs={12} md={6} {...reveal(i)}>
           {/* border-0 removes the card outline; border-top + border-3 adds only a coloured top accent */}
           <Card className={`h-100 shadow-sm border-0 border-top border-3 border-${tone}`}>
             <Card.Body className="p-4">

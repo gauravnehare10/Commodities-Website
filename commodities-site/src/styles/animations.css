@@ -1,0 +1,99 @@
+/*
+ * Motion (docs/UI_UX_GUIDELINES.md §7). Subtle and purposeful.
+ * Rules:
+ *  - Animate only opacity and transform (no layout shift).
+ *  - Never hide the page's main image (it would delay Largest Contentful Paint); only scale it.
+ *  - Everything is disabled for visitors who prefer reduced motion (see the end of this file and base.css).
+ */
+
+:root {
+  --motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --motion-duration: 700ms;
+  --motion-distance: 24px;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--motion-distance));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Image settles from a slight zoom. Transform only: the image stays fully visible. */
+@keyframes settle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(var(--motion-distance));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Entrance on page load (hero and page banners) ---------- */
+/* Set --delay inline to stagger, e.g. style={{ '--delay': '160ms' }} */
+.animate-in {
+  animation: fade-up var(--motion-duration) var(--motion-ease) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.animate-settle {
+  animation: settle 1.6s var(--motion-ease) both;
+}
+
+/* ---------- Reveal on scroll ----------
+ * Add data-reveal to an element (and optionally style={{ '--reveal-delay': '80ms' }}).
+ * src/main.jsx adds .reveal-ready to <html> only when the browser supports IntersectionObserver
+ * and the visitor allows motion; useScrollReveal() then adds .is-revealed as elements come into view.
+ * Without .reveal-ready, everything is simply visible.
+ */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--motion-distance));
+  transition:
+    opacity var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Page change ---------- */
+.page-transition {
+  animation: fade-in 350ms var(--motion-ease) both;
+}
+
+/* ---------- Reduced motion: show everything immediately ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

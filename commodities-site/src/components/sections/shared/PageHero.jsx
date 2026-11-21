@@ -2,6 +2,7 @@ import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 import { BANNER_SIZES, bannerSrcSet } from '../../../utils/images';
+import { delay } from '../../../utils/motion';
 import './shared.css';
 
 /**
@@ -29,13 +30,14 @@ export default function PageHero({ title, intro, image, breadcrumbs = [] }) {
           height="700"
           loading="eager"
           fetchPriority="high"
-          className="page-hero__image position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+          className="page-hero__image position-absolute top-0 start-0 w-100 h-100 object-fit-cover animate-settle"
         />
       )}
       <Container className="page-hero__content position-relative d-flex flex-column justify-content-end gap-3">
+        {/* Entrance: breadcrumb, title and intro fade up in turn (styles/animations.css) */}
         {breadcrumbs.length > 0 && (
           <Breadcrumb
-            className="page-hero__breadcrumb small mb-0"
+            className="page-hero__breadcrumb small mb-0 animate-in"
             listProps={{ className: 'mb-0' }}
           >
             {breadcrumbs.map((crumb) =>
@@ -51,10 +53,14 @@ export default function PageHero({ title, intro, image, breadcrumbs = [] }) {
             )}
           </Breadcrumb>
         )}
-        <h1 id="page-title" className="mb-0">
+        <h1 id="page-title" className="mb-0 animate-in" style={delay(90)}>
           {title}
         </h1>
-        {intro && <p className="page-hero__intro fs-5 mb-0">{intro}</p>}
+        {intro && (
+          <p className="page-hero__intro fs-5 mb-0 animate-in" style={delay(180)}>
+            {intro}
+          </p>
+        )}
       </Container>
     </section>
   );

@@ -18,6 +18,7 @@ import { commodities } from '../data/commodities';
 import { company } from '../data/company';
 import { home, process, testimonials, whyUs } from '../data/content';
 import { services } from '../data/services';
+import { reveal } from '../utils/motion';
 
 /** P-01 Home (docs/WEBSITE_STRUCTURE.md §4.1). */
 export default function HomePage() {
@@ -48,8 +49,8 @@ export default function HomePage() {
           }
         />
         <Row className="g-4">
-          {commodities.map((c) => (
-            <Col key={c.slug} xs={12} md={6} lg={4}>
+          {commodities.map((c, i) => (
+            <Col key={c.slug} xs={12} md={6} lg={4} {...reveal(i % 3)}>
               <CommodityCard commodity={c} />
             </Col>
           ))}
@@ -88,8 +89,8 @@ export default function HomePage() {
           }
         />
         <Row className="g-4">
-          {services.map((s) => (
-            <Col key={s.id} xs={12} md={6} lg={4}>
+          {services.map((s, i) => (
+            <Col key={s.id} xs={12} md={6} lg={4} {...reveal(i % 3)}>
               <ServiceCard service={s} />
             </Col>
           ))}

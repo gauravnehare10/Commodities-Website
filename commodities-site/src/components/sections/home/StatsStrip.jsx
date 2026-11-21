@@ -1,6 +1,7 @@
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Section from '../../ui/Section';
+import { reveal } from '../../../utils/motion';
 import './home.css';
 
 /**
@@ -15,12 +16,13 @@ export default function StatsStrip({ stats }) {
         Key figures
       </h2>
       <Row as="dl" className="g-4 mb-0">
-        {stats.map((s) => (
+        {stats.map((s, i) => (
           <Col
             key={s.label}
             xs={6}
             lg={12 / Math.min(stats.length, 4)}
             className="d-flex flex-column-reverse gap-2"
+            {...reveal(i)}
           >
             <dt className="fw-medium">{s.label}</dt>
             <dd className="stats-strip__value mb-0">{s.value}</dd>

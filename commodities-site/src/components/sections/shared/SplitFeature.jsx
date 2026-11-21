@@ -2,6 +2,7 @@ import { Check } from 'lucide-react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './shared.css';
+import { reveal } from '../../../utils/motion';
 
 /**
  * Image and text side by side (docs/UI_UX_GUIDELINES.md §6), on the Bootstrap grid.
@@ -30,7 +31,7 @@ export default function SplitFeature({
   const Heading = headingLevel;
   return (
     <Row className="align-items-center gy-5 gx-lg-5">
-      <Col lg={6} className={reverse ? 'order-lg-2' : undefined}>
+      <Col lg={6} className={reverse ? 'order-lg-2' : undefined} {...reveal()}>
         <img
           src={image}
           alt={imageAlt}
@@ -40,7 +41,7 @@ export default function SplitFeature({
           className="split-feature__image w-100 object-fit-cover rounded-3"
         />
       </Col>
-      <Col lg={6}>
+      <Col lg={6} {...reveal(1, 120)}>
         <div className="split-feature__content d-flex flex-column gap-3">
           {eyebrow && <p className="eyebrow mb-0">{eyebrow}</p>}
           <Heading id={id} className="mb-0">

@@ -1,6 +1,7 @@
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import './shared.css';
+import { reveal } from '../../../utils/motion';
 
 /**
  * Numbered process steps (docs/UI_UX_GUIDELINES.md §6, §9.2), on the Bootstrap grid.
@@ -12,7 +13,7 @@ export default function ProcessSteps({ steps }) {
   return (
     <Row as="ol" className="process-steps list-unstyled gx-4 gy-4 gy-md-5 mb-0">
       {steps.map((step, i) => (
-        <Col as="li" key={step.title} xs={12} md={6} lg={3}>
+        <Col as="li" key={step.title} xs={12} md={6} lg={3} {...reveal(i, 110)}>
           <div className="process-steps__item position-relative d-flex flex-md-column align-items-start gap-3">
             <span className="process-steps__number" aria-hidden="true">
               {String(i + 1).padStart(2, '0')}

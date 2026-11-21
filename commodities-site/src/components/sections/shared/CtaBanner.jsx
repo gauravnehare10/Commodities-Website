@@ -27,7 +27,10 @@ export default function CtaBanner({
   const tel = telHref(company.phone);
   return (
     <Section spacing="compact" labelledBy="cta-title">
-      <div className="cta-banner position-relative overflow-hidden rounded-3 bg-dark text-white">
+      <div
+        className="cta-banner position-relative overflow-hidden rounded-3 bg-dark text-white"
+        data-reveal=""
+      >
         <img
           src={cta.image}
           srcSet={bannerSrcSet(cta.image, 800, 1600)}

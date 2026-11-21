@@ -14,6 +14,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import { commodities, getCommodity } from '../data/commodities';
 import { getService } from '../data/services';
 import NotFoundPage from './NotFoundPage';
+import { reveal } from '../utils/motion';
 
 /** P-04 Commodity detail: one template for every category (docs/WEBSITE_STRUCTURE.md §4.4). */
 export default function CommodityDetailPage() {
@@ -92,8 +93,8 @@ export default function CommodityDetailPage() {
             title="How we can help"
           />
           <Row className="g-4">
-            {relatedServices.map((s) => (
-              <Col key={s.id} xs={12} md={6} lg={4}>
+            {relatedServices.map((s, i) => (
+              <Col key={s.id} xs={12} md={6} lg={4} {...reveal(i % 3)}>
                 <ServiceCard service={s} />
               </Col>
             ))}
@@ -105,8 +106,8 @@ export default function CommodityDetailPage() {
       <Section spacing="compact" labelledBy="other-commodities-title">
         <SectionHeading id="other-commodities-title" eyebrow="Explore" title="Other commodities" />
         <Row className="g-3 g-lg-4">
-          {others.map((c) => (
-            <Col key={c.slug} xs={6} md={4} lg>
+          {others.map((c, i) => (
+            <Col key={c.slug} xs={6} md={4} lg {...reveal(i, 60)}>
               <CommodityCard commodity={c} compact />
             </Col>
           ))}

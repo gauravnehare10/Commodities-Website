@@ -17,6 +17,7 @@ import './styles/variables.css';
 import './styles/theme.css';
 import './styles/base.css';
 import './styles/utilities.css';
+import './styles/animations.css';
 
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
@@ -24,6 +25,15 @@ import App from './App.jsx';
 // Remove the static default <title>/<meta> from index.html: every page renders its own via <Seo>,
 // and two title or description tags would confuse search engines.
 document.querySelectorAll('head [data-default-meta]').forEach((el) => el.remove());
+
+// Enable scroll-reveal animations before the first paint (so content never flashes visible then hidden),
+// but only where supported and where the visitor hasn't asked for reduced motion.
+if (
+  'IntersectionObserver' in window &&
+  !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+) {
+  document.documentElement.classList.add('reveal-ready');
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

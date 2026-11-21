@@ -15,7 +15,10 @@ export default function Testimonial({ items }) {
       <h2 id="testimonial-title" className="visually-hidden">
         What our customers say
       </h2>
-      <figure className="testimonial d-flex flex-column align-items-center gap-4 mx-auto mb-0 text-center">
+      <figure
+        className="testimonial d-flex flex-column align-items-center gap-4 mx-auto mb-0 text-center"
+        data-reveal=""
+      >
         <Quote size={40} aria-hidden="true" className="text-primary" />
         <blockquote className="testimonial__quote mb-0">
           <p className="mb-0">{t.quote}</p>

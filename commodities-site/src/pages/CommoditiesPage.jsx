@@ -8,6 +8,7 @@ import Section from '../components/ui/Section';
 import SectionHeading from '../components/ui/SectionHeading';
 import { commodities } from '../data/commodities';
 import { pageHeroes } from '../data/content';
+import { reveal } from '../utils/motion';
 
 /** P-03 Commodities overview (docs/WEBSITE_STRUCTURE.md §4.3). */
 export default function CommoditiesPage() {
@@ -34,8 +35,8 @@ export default function CommoditiesPage() {
           lead="Each category lists the grades we handle and what we accept. Select one to learn more or to request a quote."
         />
         <Row className="g-4">
-          {commodities.map((c) => (
-            <Col key={c.slug} xs={12} md={6} lg={4}>
+          {commodities.map((c, i) => (
+            <Col key={c.slug} xs={12} md={6} lg={4} {...reveal(i % 3)}>
               <CommodityCard commodity={c} />
             </Col>
           ))}

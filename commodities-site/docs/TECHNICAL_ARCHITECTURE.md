@@ -77,14 +77,17 @@ commodities-site/
 │   ├── pages/                   # HomePage, AboutPage, CommoditiesPage, CommodityDetailPage,
 │   │                            # ServicesPage, ContactPage, PrivacyPage, NotFoundPage
 │   ├── hooks/
-│   │   └── useReveal.js         # Optional fade-up on scroll
+│   │   └── useScrollReveal.js   # Adds .is-revealed to [data-reveal] elements as they scroll into view (run once in Layout)
 │   ├── utils/
-│   │   └── contact.js           # isTbc(), telHref(), mailHref(), displayName() for placeholder-safe contact details
+│   │   ├── contact.js           # isTbc(), telHref(), mailHref(), displayName() for placeholder-safe contact details
+│   │   ├── images.js            # bannerSrcSet(), HERO_SIZES, BANNER_SIZES
+│   │   └── motion.js            # reveal(index, step) and delay(ms) helpers for staggered animation
 │   └── styles/
 │       ├── variables.css        # Design tokens (UI_UX_GUIDELINES §2–4)
 │       ├── theme.css            # Maps tokens onto Bootstrap (--bs-* variables, buttons, forms, container)
 │       ├── base.css             # Typography, focus, skip link, reduced motion (Bootstrap Reboot is the reset)
-│       └── utilities.css        # .eyebrow, .lead, .prose (Bootstrap utilities cover the rest)
+│       ├── utilities.css        # .eyebrow, .lead, .prose (Bootstrap utilities cover the rest)
+│       └── animations.css       # Motion tokens, keyframes, .animate-in, .animate-settle, scroll reveal, page fade (UI_UX_GUIDELINES §7)
 ├── index.html
 ├── vite.config.js
 ├── eslint.config.js

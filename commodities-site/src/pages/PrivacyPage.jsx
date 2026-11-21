@@ -4,6 +4,7 @@ import Section from '../components/ui/Section';
 import { company } from '../data/company';
 import { privacy } from '../data/content';
 import { mailHref } from '../utils/contact';
+import { reveal } from '../utils/motion';
 
 /** P-07 Privacy policy (docs/WEBSITE_STRUCTURE.md §4.7). Text supplied by the business (MI-13). */
 export default function PrivacyPage() {
@@ -24,7 +25,7 @@ export default function PrivacyPage() {
       <Section>
         <div className="prose mx-auto">
           {privacy.sections.map((section) => (
-            <section key={section.heading} className="mb-5">
+            <section key={section.heading} className="mb-5" {...reveal()}>
               <h2 className="h3 mb-3">{section.heading}</h2>
               {section.body.map((p) => (
                 <p key={p} className="text-secondary">

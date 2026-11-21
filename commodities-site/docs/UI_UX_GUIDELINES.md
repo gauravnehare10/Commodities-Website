@@ -153,10 +153,22 @@ Components are built on **React Bootstrap** and themed to this guide. Bootstrap 
 
 ## 7. Motion
 
-- **Subtle and purposeful.** Hover transitions take 200ms; the mobile menu uses Bootstrap's built-in Offcanvas transition.
-- **Optional fade-up on scroll** for section headings and cards: 16px movement, 500ms, once only, using a small `IntersectionObserver` hook. Content stays visible without JavaScript.
+Subtle and purposeful. Animations use only `opacity` and `transform`, so they never move the layout (no CLS). Keyframes and timings are in `src/styles/animations.css`.
+
+| Where | What happens |
+|---|---|
+| **Hero / PageHero** | Text fades up line by line (90ms apart); the banner image settles from a 1.06 zoom over 1.6s. The image is never hidden, which protects LCP. |
+| **Scroll reveal** | Section headings, cards, grid items, process steps, split features, stats, the CTA banner and the testimonial fade up 24px over 700ms the first time they enter the screen. Items in a row are staggered with `reveal(index, step)` from `src/utils/motion.js`. |
+| **Page change** | The new page fades in over 350ms. This doesn't happen on the first load. |
+| **Header** | The background, shadow and border change smoothly on scroll. On desktop, the copper underline grows from the left on hover and focus. |
+| **Mobile menu** | Links slide in one after another, then the phone/CTA block fades up. |
+| **Buttons** | Primary buttons lift 1px with a shadow on hover. |
+| **Form success** | The success panel fades up. |
+
+- **Not animated:** the contact form and details, and the sticky enquiry panel on commodity pages (they must be usable immediately).
 - **No** parallax, carousels, auto-playing video or scroll-jacking.
-- **`prefers-reduced-motion: reduce`** turns all animation off.
+- **Content is safe without JavaScript.** Reveal-hidden styles only apply once `main.jsx` adds `html.reveal-ready`.
+- **`prefers-reduced-motion: reduce`** turns all animation off and shows everything immediately.
 
 ## 8. Accessibility checklist (WCAG 2.2 AA)
 

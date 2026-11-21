@@ -1,5 +1,6 @@
 import Badge from 'react-bootstrap/Badge';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { reveal } from '../../../utils/motion';
 
 /**
  * Grades handled for a commodity (docs/UI_UX_GUIDELINES.md §6).
@@ -11,8 +12,13 @@ import ListGroup from 'react-bootstrap/ListGroup';
 export default function GradeList({ grades }) {
   return (
     <ListGroup as="ul" variant="flush" className="border-top border-bottom">
-      {grades.map((g) => (
-        <ListGroup.Item as="li" key={g.name} className="px-0 py-4 bg-transparent">
+      {grades.map((g, i) => (
+        <ListGroup.Item
+          as="li"
+          key={g.name}
+          className="px-0 py-4 bg-transparent"
+          {...reveal(i, 60)}
+        >
           <div className="d-flex flex-wrap align-items-center gap-2 mb-1">
             <h3 className="fs-5 mb-0">{g.name}</h3>
             {g.code && (

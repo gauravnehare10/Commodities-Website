@@ -112,8 +112,23 @@
   --bs-btn-disabled-border-color: var(--color-copper);
 }
 
+/* Primary buttons lift slightly on hover and press back down on click */
+.btn {
+  transition:
+    color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    box-shadow var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
 .btn-primary:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-outline-dark {

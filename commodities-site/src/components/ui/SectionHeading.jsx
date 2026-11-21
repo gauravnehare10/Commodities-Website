@@ -26,7 +26,8 @@ export default function SectionHeading({
     .join(' ');
 
   return (
-    <div className={classes}>
+    // data-reveal: fades up as it scrolls into view (styles/animations.css)
+    <div className={classes} data-reveal="">
       <div className="section-heading__text">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <Heading id={id} className="section-heading__title">

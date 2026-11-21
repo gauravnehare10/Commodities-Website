@@ -12,9 +12,11 @@
   background-color: rgb(255 255 255 / 0.96);
   backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid transparent;
+  /* Smooth change from transparent (Home, over the hero) to white with a shadow on scroll */
   transition:
-    box-shadow var(--duration-fast) var(--ease),
-    border-color var(--duration-fast) var(--ease);
+    background-color 300ms var(--ease),
+    box-shadow 300ms var(--ease),
+    border-color 300ms var(--ease);
 }
 
 .site-header--scrolled {
@@ -188,6 +190,39 @@ a.site-header__phone:hover {
   }
 }
 
+/* Mobile menu: links slide in one after another when it opens (keyframes in styles/animations.css) */
+@media (max-width: 991.98px) {
+  .site-menu.show .site-nav__link,
+  .site-menu.show .site-header__actions {
+    animation: slide-in-right 450ms var(--motion-ease) both;
+  }
+
+  .site-menu.show .site-nav__link:nth-child(1) {
+    animation-delay: 80ms;
+  }
+
+  .site-menu.show .site-nav__link:nth-child(2) {
+    animation-delay: 130ms;
+  }
+
+  .site-menu.show .site-nav__link:nth-child(3) {
+    animation-delay: 180ms;
+  }
+
+  .site-menu.show .site-nav__link:nth-child(4) {
+    animation-delay: 230ms;
+  }
+
+  .site-menu.show .site-nav__link:nth-child(5) {
+    animation-delay: 280ms;
+  }
+
+  .site-menu.show .site-header__actions {
+    animation-name: fade-up;
+    animation-delay: 340ms;
+  }
+}
+
 /* ================= Desktop (≥ 992px) ================= */
 @media (min-width: 992px) {
   /* The Offcanvas renders inline here: undo the dark-panel text colour from theme.css */
@@ -213,7 +248,8 @@ a.site-header__phone:hover {
   }
 
   /* Copper underline for the active page */
-  .site-nav__link.active::after {
+  /* Copper underline: grows from the left on hover/focus, stays full on the active page */
+  .site-nav__link::after {
     content: '';
     position: absolute;
     left: var(--bs-navbar-nav-link-padding-x);
@@ -222,6 +258,15 @@ a.site-header__phone:hover {
     height: 2px;
     border-radius: 2px;
     background: var(--color-copper);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 250ms var(--ease);
+  }
+
+  .site-nav__link:hover::after,
+  .site-nav__link:focus-visible::after,
+  .site-nav__link.active::after {
+    transform: scaleX(1);
   }
 
   .site-header__actions {
