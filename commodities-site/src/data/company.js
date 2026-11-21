@@ -12,7 +12,7 @@ export const company = {
   phone: '[TBC]', // MI-07
   // MI-07. Also the address the enquiry form's email is sent to (see formEndpoint below).
   // While it is '[TBC]', the visitor's email app opens with the "To" field empty.
-  email: '[TBC]',
+  email: 'sales@yourcompany.com',
   address: '[TBC] Site address', // MI-07
   openingHours: [
     { days: 'Monday – Friday', hours: '[TBC]' }, // MI-07
