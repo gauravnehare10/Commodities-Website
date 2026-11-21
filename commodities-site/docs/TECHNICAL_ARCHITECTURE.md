@@ -51,7 +51,7 @@ commodities-site/
 │   ├── favicon.svg
 │   ├── robots.txt
 │   ├── sitemap.xml
-│   └── _redirects               # SPA fallback for Netlify: /*  /index.html  200
+│   └── images/                  # Banner images with fixed URLs (+ *-sm.webp phone copies), see §8
 ├── src/
 │   ├── main.jsx                 # Entry: router, global CSS, fonts
 │   ├── App.jsx                  # Route definitions
@@ -120,7 +120,7 @@ commodities-site/
 
 - **Unknown commodity slugs:** `CommodityDetailPage` looks up the slug in `commodities.js` and renders `NotFoundPage` if it isn't found.
 - **Scroll position:** `ScrollToTop` scrolls to the top on route change, or to the `#hash` target if one is present (for service anchors).
-- **Static hosts** need a fallback that sends every path to `index.html`: `_redirects` on Netlify, `vercel.json` rewrites on Vercel.
+- **Vercel fallback.** A rewrite in `vercel.json` serves `index.html` for every path without a file extension, so deep links and page refreshes work. Paths with an extension (`/assets/…`, `/images/…`, `/sitemap.xml`) are served as files, so a missing file returns a real 404. Unknown page URLs render `NotFoundPage`, which is marked `noindex`.
 
 ## 6. Styling architecture
 
@@ -149,21 +149,20 @@ commodities-site/
 
 ## 7. Enquiry form (no backend)
 
-The form is a normal HTML form, enhanced with React for validation and a success message.
+The form is a normal HTML form, enhanced with React for validation and a success message. Vercel has no built-in form handling, so there are two delivery modes, chosen by one value in `company.js` (`formEndpoint`, MI-12):
 
-| Option | How it works | When to use |
-|---|---|---|
-| **A. Netlify Forms** (recommended if hosting on Netlify) | Add `data-netlify="true"` and a hidden `form-name` field. Netlify captures submissions and emails them. | Hosting on Netlify |
-| **B. Formspree** (or similar) | The form posts to `https://formspree.io/f/<id>`. The service emails the submission. | Any other host |
+| Mode | `formEndpoint` | What happens on "Send enquiry" | Use |
+|---|---|---|---|
+| **Email** (current) | `''` | The visitor's email app opens with a new message: To = `company.email`, a subject such as "Website enquiry: Sell material – Wood", and every field in the body. The visitor presses Send. A panel then says the email is ready, with an "Open email again" button. | Demo / no accounts needed |
+| **Formspree** | `https://formspree.io/f/<id>` | The form posts to Formspree, which emails the business directly. The visitor sees "Thank you, your enquiry has been sent". | Production, when a Formspree account is set up |
 
-- **Configuration.** The endpoint is one value in `company.js` (`formEndpoint`, MI-12). It is not a secret.
+- **Email mode details.** `buildMailto()` in `sections/contact/enquiry.js` URL-encodes the subject and a CRLF body. While `company.email` is `[TBC]`, the To field is left empty. Messages are capped at 1,500 characters so the link stays within what mail apps accept. Limitation: the visitor needs an email app, or a browser set up to handle email links; without one, the "Open email again" button and phone number are the fallback.
+- **Configuration.** `formEndpoint` is not a secret. To switch to Formspree, create a free account, create a form with the business inbox as recipient, and paste the form URL into `formEndpoint`.
 - **Validation.** Native HTML attributes (`required`, `type="email"`, `minlength`) plus a small `validate()` function for friendly messages. Errors show below each field, and the first invalid field is focused.
 - **Submission.** `fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })`. On success, the form is replaced by a thank-you panel. On failure, a message shows the phone number and email.
-- **Spam.** A hidden honeypot field (supported natively by both services) plus each service's built-in filtering.
+- **Spam.** A hidden honeypot field named `_gotcha`, which Formspree recognises natively, plus Formspree's built-in filtering.
 - **Pre-fill.** `useSearchParams()` reads `?commodity=` to preselect the commodity.
-- **Local development.** If no endpoint is configured, the form logs the data to the console and shows the success state.
-- **Implementation.** `formEndpoint` in `company.js` is `'netlify'` (POST to `/` as URL-encoded data, with the hidden `form-name` field) or a Formspree URL (POST as `FormData`, with `Accept: application/json`). The honeypot field is named `_gotcha`: Formspree recognises it natively, and Netlify reads it via `netlify-honeypot="_gotcha"`. Validation and sending live in `sections/contact/enquiry.js`, separate from the UI.
-- **Netlify detection.** Netlify detects forms in the deployed HTML, so a hidden static copy of the form goes in `index.html` at launch (DEVELOPMENT_ROADMAP Phase 11).
+- **Implementation.** Validation and sending live in `sections/contact/enquiry.js`, separate from the UI. Formspree supports cross-origin requests, so the browser posts directly to it; no Vercel function is needed.
 - **Accessibility.** Each field has a `<label>`. Invalid fields get Bootstrap's `is-invalid` styling, `aria-invalid="true"`, and `aria-describedby` pointing to the error text. Focus moves to the first invalid field, the error count is announced in an `aria-live` region, and the thank-you message receives focus and has `role="status"`.
 
 ## 8. Images
@@ -213,11 +212,14 @@ There is no automated test suite; the site is too simple to need one.
 
 | Item | Decision |
 |---|---|
-| Host | **Netlify** recommended: free tier, Netlify Forms, simple SPA redirects. Vercel or Cloudflare Pages also work with option B in §7. Final choice: MI-15. |
-| Build | Command `npm run build`; publish directory `dist` |
-| Domain | Custom domain with HTTPS (automatic on all three hosts) |
-| Security headers | Set in `public/_headers` (Netlify): `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy` |
-| Releases | Push to `main` to deploy; the host's preview URLs are used for review |
+| Host | **Vercel** (decided). Enquiries go through Formspree (§7). |
+| Configuration | `commodities-site/vercel.json`: framework `vite`, build `npm run build`, output `dist`, SPA rewrite (§5), headers, `trailingSlash: false` (redirects `/about/` to `/about`, matching the sitemap) |
+| Repository | The repository holds several projects, so the Vercel project's **Root Directory** must be set to `commodities-site` |
+| Node | `22.x` (from `engines` in `package.json`); Vercel installs with `npm ci` from `package-lock.json` |
+| Domain | Custom domain added in Vercel → Settings → Domains; HTTPS certificates are automatic (MI-15) |
+| Security headers | Set in `vercel.json` on every path: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` (camera, microphone, geolocation, payment, usb off), `Strict-Transport-Security`. A Content-Security-Policy is not set yet: it would need a hash for the inline preload script in `index.html` and `connect-src https://formspree.io`; it can be added after launch. |
+| Caching | `/assets/*` (fingerprinted): 1 year, immutable. `/images/*` (fixed names): 1 day, plus `stale-while-revalidate`. HTML: Vercel's default (always revalidated). |
+| Releases | Each push to `main` deploys to production; every other branch or pull request gets its own preview URL for review |
 
 ## 13. Coding standards
 

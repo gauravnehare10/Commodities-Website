@@ -10,7 +10,9 @@ export const company = {
   registeredAddress: '[TBC] Registered address', // MI-01
   tagline: '[TBC] One-line description of the business.', // MI-03
   phone: '[TBC]', // MI-07
-  email: '[TBC]', // MI-07
+  // MI-07. Also the address the enquiry form's email is sent to (see formEndpoint below).
+  // While it is '[TBC]', the visitor's email app opens with the "To" field empty.
+  email: '[TBC]',
   address: '[TBC] Site address', // MI-07
   openingHours: [
     { days: 'Monday – Friday', hours: '[TBC]' }, // MI-07
@@ -22,10 +24,12 @@ export const company = {
   social: [], // { label, url }
   responseTime: '[TBC]', // MI-12, e.g. "one working day" (shown after an enquiry is sent)
   /**
-   * Where enquiries are sent (MI-12, docs/TECHNICAL_ARCHITECTURE.md §7):
-   *   'netlify'                      → Netlify Forms (site hosted on Netlify)
-   *   'https://formspree.io/f/xxxx'  → Formspree (any host)
-   *   ''                             → not configured: logs to the console and shows success (development only)
+   * How the enquiry form delivers enquiries (MI-12, docs/TECHNICAL_ARCHITECTURE.md §7):
+   *   ''                                → EMAIL mode (current, for the demo): pressing "Send enquiry" opens the
+   *                                       visitor's email app with the enquiry written out, addressed to `email`
+   *                                       above. The visitor presses Send in their email app.
+   *   'https://formspree.io/f/xxxxxxxx' → FORMSPREE mode: the form is sent straight to Formspree, which emails
+   *                                       the business. No email app needed. (Free account at formspree.io.)
    */
   formEndpoint: '',
 };

@@ -145,8 +145,8 @@ Service anchors: `#collection-logistics`, `#site-clearances`, `#commodity-tradin
 | Consent | checkbox | Yes | "I agree to my details being used to respond to this enquiry", linked to Privacy |
 | Honeypot | hidden text | — | Spam trap; never shown |
 
-- **After a successful submission**, the form is replaced by a thank-you message with the expected response time.
-- **If submission fails**, an error message shows with the phone number and email address.
+- **Delivery (demo, email mode):** "Send enquiry" opens the visitor's email app with the enquiry written out and addressed to the company email. The form is replaced by a "Your email is ready to send" panel with an "Open email again" button (TECHNICAL_ARCHITECTURE §7).
+- **Delivery (Formspree mode, when configured):** after a successful submission the form is replaced by a thank-you message with the expected response time. If submission fails, an error message shows with the phone number and email address.
 
 ### 4.7 P-07 Privacy and P-08 404
 
@@ -176,7 +176,7 @@ export const company = {
   stats: [],                           // MI-11: { value, label }
   social: [],                          // { label, url }
   responseTime: '[TBC]',               // MI-12: shown in the thank-you message, e.g. "one working day"
-  formEndpoint: '',                    // MI-12: 'netlify' or a Formspree URL (TECHNICAL_ARCHITECTURE §7)
+  formEndpoint: '',                    // MI-12: Formspree form URL (TECHNICAL_ARCHITECTURE §7)
 };
 ```
 

@@ -77,7 +77,7 @@ Build each page from its blueprint in WEBSITE_STRUCTURE §4, reusing components.
 | 5 | Home (P-01) | ✅ Done: all 10 sections; header transparent over the hero; checked at 320–1440px |
 | 6 | Commodities (P-03, P-04) | ✅ Done: overview page and detail template for all 6 categories (PageHero, GradeList, AcceptanceLists, EnquiryPanel, compact cards); checked at 320–1440px |
 | 7 | Services (P-05), About (P-02) | ✅ Done: Services has jump links and 6 alternating blocks; About is built entirely from shared sections; anchors land below the sticky header; checked at 320–1440px |
-| 8 | Contact (P-06) | ✅ Done: enquiry form (validation, pre-fill, success and error states, Netlify and Formspree delivery tested with mocked responses) and contact details; checked at 320–1440px |
+| 8 | Contact (P-06) | ✅ Done: enquiry form (validation, pre-fill, success and error states, Formspree delivery tested with mocked responses) and contact details; checked at 320–1440px |
 | 9 | Privacy (P-07), 404 (P-08, done in Phase 3), SEO files | ✅ Done: Privacy page; `sitemap.xml` (12 URLs) and `robots.txt` using `example.com` until the domain is known (MI-15); SEO audit of all 13 pages passes (one unique title and description each, `noindex` on 404 only) |
 
 ### Phase 10: QA
@@ -86,11 +86,16 @@ Run the checklist in §5 and fix any issues. ✅ Done; the results and remaining
 
 ### Phase 11: Launch
 
+Hosting is **Vercel**. The project is deploy-ready: `vercel.json`, Node 22, and Formspree for enquiries. See README "Deploy to Vercel" for the steps.
+
+- [x] Vercel configuration: `vercel.json` (SPA rewrite, security headers, caching), `engines.node` 22.x; the Netlify-only `_redirects` file and form code removed
 - [ ] All launch-blocker MI items resolved, with no `[TBC]` text left (search the codebase)
-- [ ] Form endpoint configured in `src/data/company.js` (`formEndpoint`: `'netlify'` or the Formspree URL); a live test submission reaches the business inbox
-- [ ] **If using Netlify Forms:** add a hidden static copy of the form to `index.html` (`<form name="enquiry" data-netlify="true" netlify-honeypot="_gotcha" hidden>` with an input for each field name). Netlify detects forms in the deployed HTML, and this SPA renders the real form with JavaScript.
-- [ ] Host connected to the repository; build command `npm run build`, publish directory `dist`
-- [ ] Custom domain and HTTPS active; replace `https://www.example.com` with the real domain in `public/sitemap.xml` and `public/robots.txt`
+- [ ] Company email set in `src/data/company.js` (`email`). The demo form opens the visitor's email app addressed to it; send a test enquiry from the live site.
+- [ ] *(Optional, for production)* Formspree form created and its URL set as `formEndpoint`, so enquiries arrive without the visitor's email app
+- [ ] Vercel project imported from the Git repository with **Root Directory = `commodities-site`** (framework, build command and output directory are read from `vercel.json`)
+- [ ] Preview deployment checked: deep links and refresh on `/commodities/wood`, the 404 page, the form, and headers (`curl -I`)
+- [ ] Custom domain added in Vercel and HTTPS active; replace `https://www.example.com` with the real domain in `public/sitemap.xml` and `public/robots.txt`
+- [ ] Cross-browser check on real devices (Safari iOS, Chrome Android, Firefox), which wasn't possible in Phase 10
 - [ ] Sitemap submitted to Google Search Console
 
 ## 4. Milestones
@@ -115,7 +120,7 @@ Phase 10 results (2026-11-21). Automated tests ran in Chrome on the dev server, 
 
 - [x] Every navigation, footer and call-to-action link works (crawler: 12 pages, 0 broken links, 0 missing anchors); service anchors land below the sticky header
 - [x] An unknown commodity URL shows the 404 page
-- [x] Form: required-field errors, invalid email and phone, live correction, success state, failure state, `?commodity=` pre-fill, and the Netlify and Formspree request formats (29 automated checks)
+- [x] Form: required-field errors, invalid email and phone, live correction, success state, failure state, `?commodity=` pre-fill, and the Formspree request format (22 automated checks)
 - [ ] Phone links open the dialler on mobile. **Can't be tested until the real number replaces `[TBC]` (MI-07)**; `tel:` links are generated automatically once it does.
 
 **Accessibility**

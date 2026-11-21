@@ -149,10 +149,10 @@ Development can start with `[TBC]` placeholders. Items marked **Launch blocker**
 | MI-09 | Areas served, and export markets if any | Home, Services | High |
 | MI-10 | Photography (yard, materials, fleet, team), or approval to use licensed stock images | Site-wide | High |
 | MI-11 | Verified statistics (years trading, tonnage, fleet) and testimonials, with permission | Home | Medium. These sections are hidden if not supplied. |
-| MI-12 | Where enquiries should be delivered (email address) and the preferred form service | Contact form | Launch blocker |
+| MI-12 | Email address that enquiries should be delivered to (`company.email`). The demo uses email mode, which opens the visitor's email app. For production, optionally a Formspree account so enquiries arrive without the visitor's email app (TECHNICAL_ARCHITECTURE §7). | Contact form | Launch blocker |
 | MI-13 | Privacy policy text | Privacy | Launch blocker |
 | MI-14 | Whether analytics are wanted (this would also need a cookie notice) | Future | Low |
-| MI-15 | Domain name and hosting account | Deployment | Launch blocker |
+| MI-15 | Domain name, and access to a Vercel account (hosting is decided: Vercel) | Deployment | Launch blocker |
 
 ## 10. Assumptions and constraints
 

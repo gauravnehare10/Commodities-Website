@@ -11,7 +11,7 @@ import { company } from '../../../data/company';
 import { enquiryTypes } from '../../../data/content';
 import { mailHref, telHref } from '../../../utils/contact';
 import Button from '../../ui/Button';
-import { emptyEnquiry, FIELD_ORDER, FORM_NAME, HONEYPOT, sendEnquiry, validate } from './enquiry';
+import { emptyEnquiry, FIELD_ORDER, HONEYPOT, MESSAGE_MAX, sendEnquiry, validate } from './enquiry';
 import './contact.css';
 
 /**
@@ -27,6 +27,7 @@ export default function EnquiryForm() {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false); // after the first submit, validate as the user types
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+  const [result, setResult] = useState(null); // { mode: 'email', mailto } | { mode: 'formspree' }
   const formRef = useRef(null);
   const successRef = useRef(null);
 
@@ -53,14 +54,45 @@ export default function EnquiryForm() {
     }
     setStatus('sending');
     try {
-      await sendEnquiry(company.formEndpoint, formRef.current);
+      setResult(await sendEnquiry(company.formEndpoint, formRef.current, values, company.email));
       setStatus('success');
     } catch {
       setStatus('error');
     }
   };
 
+  if (status === 'success' && result?.mode === 'email') {
+    // EMAIL mode: the enquiry is written out in the visitor's email app, waiting for them to press Send.
+    return (
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        className="enquiry-success bg-light rounded-3 p-4 p-md-5"
+        role="status"
+      >
+        <Mail size={40} aria-hidden="true" className="text-primary mb-3" />
+        <h2 className="h3 mb-2">Your email is ready to send</h2>
+        <p className="text-secondary mb-2">
+          Your email app should now be open with your enquiry written out. Please check it and press{' '}
+          <strong>Send</strong> to reach our team.
+        </p>
+        <p className="text-secondary mb-4">
+          If nothing opened, use the button below, or call us on {company.phone}.
+        </p>
+        <div className="d-grid d-sm-flex flex-wrap gap-3">
+          <Button href={result.mailto} arrow>
+            Open email again
+          </Button>
+          <Button to="/commodities" variant="secondary">
+            Browse our commodities
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   if (status === 'success') {
+    // FORMSPREE mode: the enquiry has been delivered.
     return (
       <div
         ref={successRef}
@@ -90,15 +122,10 @@ export default function EnquiryForm() {
       ref={formRef}
       noValidate
       onSubmit={handleSubmit}
-      name={FORM_NAME}
+      name="enquiry"
       method="post"
-      data-netlify="true"
-      netlify-honeypot={HONEYPOT}
       aria-describedby="enquiry-required-note"
     >
-      {/* Netlify Forms needs the form name in the submitted data */}
-      <input type="hidden" name="form-name" value={FORM_NAME} />
-
       {/* Spam trap: hidden from people, often filled in by bots */}
       <div className="visually-hidden" aria-hidden="true">
         <label htmlFor="enquiry-hp">Leave this field empty</label>
@@ -226,6 +253,7 @@ export default function EnquiryForm() {
               name="message"
               required
               minLength={10}
+              maxLength={MESSAGE_MAX}
               value={values.message}
               onChange={(e) => update('message', e.target.value)}
             />
