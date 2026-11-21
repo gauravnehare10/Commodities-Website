@@ -5,14 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#14171A" />
-    <!-- Defaults; each page overrides title and description (TECHNICAL_ARCHITECTURE §9) -->
-    <title>[TBC] Company Name – Scrap Metal &amp; Commodities</title>
+    <!--
+      Site-wide defaults for crawlers that don't run JavaScript (e.g. social link previews).
+      Tags marked data-default-meta are removed by src/main.jsx when the app starts, so each page's
+      own <Seo> tags are the only ones in the browser (TECHNICAL_ARCHITECTURE §9).
+    -->
+    <title data-default-meta>[TBC] Company Name – Scrap Metal &amp; Commodities</title>
     <meta
+      data-default-meta
       name="description"
+      content="Scrap metal and recyclable commodities: ferrous and non-ferrous metals, plastics, paper, wood and electrical waste. Get a quote today."
+    />
+    <meta
+      data-default-meta
+      property="og:title"
+      content="[TBC] Company Name – Scrap Metal &amp; Commodities"
+    />
+    <meta
+      data-default-meta
+      property="og:description"
       content="Scrap metal and recyclable commodities: ferrous and non-ferrous metals, plastics, paper, wood and electrical waste. Get a quote today."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
+
+    <!--
+      Starts downloading the current page's banner image (its largest element) straight away,
+      instead of waiting for the JavaScript to load and render the page (TECHNICAL_ARCHITECTURE §10).
+      srcset/sizes must match src/utils/images.js and the Hero / PageHero components.
+    -->
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/+$/, '') || '/';
+        var banners = {
+          '/about': '/images/hero/about-wide.webp',
+          '/commodities': '/images/hero/commodities-wide.webp',
+          '/services': '/images/hero/services-wide.webp',
+          '/contact': '/images/hero/contact-wide.webp',
+        };
+        var commodity = path.match(/^\/commodities\/([a-z-]+)$/);
+        var url, small, large, sizes;
+        if (path === '/') {
+          url = '/images/hero/home.webp';
+          small = 800;
+          large = 1200;
+          sizes = '(min-width: 992px) 50vw, 100vw';
+        } else {
+          url =
+            banners[path] || (commodity && '/images/commodities/' + commodity[1] + '-wide.webp');
+          small = 800;
+          large = 1600;
+          sizes = '100vw';
+        }
+        if (!url) return;
+        var link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.setAttribute('fetchpriority', 'high');
+        link.setAttribute(
+          'imagesrcset',
+          url.replace('.webp', '-sm.webp') + ' ' + small + 'w, ' + url + ' ' + large + 'w',
+        );
+        link.setAttribute('imagesizes', sizes);
+        document.head.appendChild(link);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

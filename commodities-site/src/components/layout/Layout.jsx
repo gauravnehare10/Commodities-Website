@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
 import Header from './Header';
@@ -13,7 +14,10 @@ export default function Layout() {
       <ScrollToTop />
       <Header />
       <main id="main-content" tabIndex={-1} className="site-main">
-        <Outlet />
+        {/* Pages load on demand; reserve space meanwhile so the footer doesn't jump up */}
+        <Suspense fallback={<div className="min-vh-100" aria-busy="true" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </>

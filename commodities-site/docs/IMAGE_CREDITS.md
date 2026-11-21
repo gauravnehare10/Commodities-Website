@@ -23,7 +23,9 @@ All images are from **[Unsplash](https://unsplash.com)** under the [Unsplash Lic
 
 ## Images
 
-| File(s) in `src/assets/images/` | Subject | Photographer | Source |
+Banner images (`hero/*` and `commodities/*-wide.webp`) are in **`public/images/`**, each with a phone-sized `*-sm.webp` copy (800px wide). All other images are in **`src/assets/images/`**.
+
+| File(s) | Subject | Photographer | Source |
 |---|---|---|---|
 | `hero/home.webp` | Excavator working on a pile of scrap metal | yasin hemmati | [Unsplash](https://unsplash.com/photos/an-excavator-working-on-a-pile-of-scrap-metal-lp6CBQSr1Ek) |
 | `hero/commodities-wide.webp` | Blue structural steel beams against the sky | Declan Sun | [Unsplash](https://unsplash.com/photos/bright-blue-structural-steel-beams-against-a-cloudy-sky-_Xp_HBmtS2Y) |
@@ -49,4 +51,4 @@ All images are from **[Unsplash](https://unsplash.com)** under the [Unsplash Lic
 
 ## Replacing with client photography
 
-To replace a stock image, keep its file name and dimensions and overwrite the file. No code changes are needed. Then remove its row from this table.
+To replace a stock image, keep its file name and dimensions and overwrite the file. No code changes are needed. Then remove its row from this table. For banner images in `public/images/`, also regenerate the `*-sm.webp` copy (800px wide).

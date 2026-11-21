@@ -7,7 +7,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { company } from '../../data/company';
 import { mainNav, quoteLink } from '../../data/navigation';
-import { telHref } from '../../utils/contact';
+import { displayName, telHref } from '../../utils/contact';
 import Button from '../ui/Button';
 import Logo from './Logo';
 import './Header.css';
@@ -61,7 +61,13 @@ export default function Header() {
       className={headerClass}
     >
       <Container className="site-header__inner">
-        <Navbar.Brand as={Link} to="/" className="site-header__brand" aria-label="Home">
+        {/* Accessible name starts with the visible logo text (WCAG 2.5.3 Label in Name) */}
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          className="site-header__brand"
+          aria-label={`${displayName(company.name)} – home page`}
+        >
           <Logo />
         </Navbar.Brand>
 

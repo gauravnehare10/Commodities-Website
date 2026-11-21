@@ -78,11 +78,11 @@ Build each page from its blueprint in WEBSITE_STRUCTURE §4, reusing components.
 | 6 | Commodities (P-03, P-04) | ✅ Done: overview page and detail template for all 6 categories (PageHero, GradeList, AcceptanceLists, EnquiryPanel, compact cards); checked at 320–1440px |
 | 7 | Services (P-05), About (P-02) | ✅ Done: Services has jump links and 6 alternating blocks; About is built entirely from shared sections; anchors land below the sticky header; checked at 320–1440px |
 | 8 | Contact (P-06) | ✅ Done: enquiry form (validation, pre-fill, success and error states, Netlify and Formspree delivery tested with mocked responses) and contact details; checked at 320–1440px |
-| 9 | Privacy (P-07), 404 (P-08 ✅ done in Phase 3), SEO files | Not started |
+| 9 | Privacy (P-07), 404 (P-08, done in Phase 3), SEO files | ✅ Done: Privacy page; `sitemap.xml` (12 URLs) and `robots.txt` using `example.com` until the domain is known (MI-15); SEO audit of all 13 pages passes (one unique title and description each, `noindex` on 404 only) |
 
 ### Phase 10: QA
 
-Run the checklist in §5 and fix any issues.
+Run the checklist in §5 and fix any issues. ✅ Done; the results and remaining items are in §5.
 
 ### Phase 11: Launch
 
@@ -90,7 +90,7 @@ Run the checklist in §5 and fix any issues.
 - [ ] Form endpoint configured in `src/data/company.js` (`formEndpoint`: `'netlify'` or the Formspree URL); a live test submission reaches the business inbox
 - [ ] **If using Netlify Forms:** add a hidden static copy of the form to `index.html` (`<form name="enquiry" data-netlify="true" netlify-honeypot="_gotcha" hidden>` with an input for each field name). Netlify detects forms in the deployed HTML, and this SPA renders the real form with JavaScript.
 - [ ] Host connected to the repository; build command `npm run build`, publish directory `dist`
-- [ ] Custom domain and HTTPS active; `sitemap.xml` URLs use the real domain
+- [ ] Custom domain and HTTPS active; replace `https://www.example.com` with the real domain in `public/sitemap.xml` and `public/robots.txt`
 - [ ] Sitemap submitted to Google Search Console
 
 ## 4. Milestones
@@ -104,34 +104,39 @@ Run the checklist in §5 and fix any issues.
 
 ## 5. QA checklist
 
+Phase 10 results (2026-11-21). Automated tests ran in Chrome on the dev server, and Lighthouse ran on the production build.
+
 **Responsive**
 
-- [ ] 320, 375, 576, 768, 992, 1200 and 1440px widths, with no horizontal scrolling
-- [ ] Mobile menu, hero and card grids behave as described in UI_UX_GUIDELINES §9
+- [x] 320, 375, 576, 768, 992, 1200, 1280 and 1440px widths (8 pages × 8 widths = 64 combinations), with no horizontal scrolling
+- [x] Mobile menu, hero and card grids behave as described in UI_UX_GUIDELINES §9 (screenshots reviewed at each device class)
 
 **Functional**
 
-- [ ] Every navigation, footer and call-to-action link works; service anchors scroll to the right section
-- [ ] An unknown commodity URL shows the 404 page
-- [ ] Form: required-field errors, invalid email, success state, failure state and `?commodity=` pre-fill
-- [ ] Phone links open the dialler on mobile
+- [x] Every navigation, footer and call-to-action link works (crawler: 12 pages, 0 broken links, 0 missing anchors); service anchors land below the sticky header
+- [x] An unknown commodity URL shows the 404 page
+- [x] Form: required-field errors, invalid email and phone, live correction, success state, failure state, `?commodity=` pre-fill, and the Netlify and Formspree request formats (29 automated checks)
+- [ ] Phone links open the dialler on mobile. **Can't be tested until the real number replaces `[TBC]` (MI-07)**; `tel:` links are generated automatically once it does.
 
 **Accessibility**
 
-- [ ] Keyboard-only run through all pages and the form
-- [ ] axe DevTools reports no serious issues
-- [ ] Headings, landmarks, alt text and contrast checked (UI_UX_GUIDELINES §8)
-- [ ] Usable at 200% zoom
+- [x] Keyboard-only run: skip link, 37 focus stops on Home all with a visible focus ring, logical order, mobile menu traps focus and closes on Esc
+- [x] axe-core: 0 violations on 14 pages × 2 sizes, plus the open mobile menu and the form showing errors. One issue was found and fixed: the logo link's accessible name didn't include its visible text (WCAG 2.5.3).
+- [x] Headings (one `h1` per page), landmarks, alt text and contrast covered by axe and the earlier checks
+- [x] Usable at 200% zoom: a 1280px screen at 200% is a 640px layout, covered by the width sweep
 
 **Performance and SEO**
 
-- [ ] Lighthouse mobile scores meet the targets on Home, a commodity page and Contact
-- [ ] Every page has a unique title and description
-- [ ] Image sizes within the limits in UI_UX_GUIDELINES §5
+- [x] Lighthouse mobile: Accessibility, Best Practices and SEO are **100 on every page tested**; CLS 0
+- [ ] Lighthouse Performance target (≥ 90): **partly met**. Services 91; Home 83, Ferrous Metals 87, Contact 87–91, About 86 (runs vary ±4). The limit is first paint (≈2.7 s on simulated slow 4G) for a client-rendered SPA. Fixes applied: banner preload, phone-sized banner images, route code splitting, a CLS fix. Remaining options: TECHNICAL_ARCHITECTURE §10 "Known limit".
+- [x] Every page has a unique title and description (SEO audit: 13 pages, 0 problems)
+- [x] Image sizes within the limits in UI_UX_GUIDELINES §5 (24 images + 12 phone copies checked)
+- [x] Bundle budgets: initial JS ≈ 101 KB gzipped (budget 120), CSS ≈ 35 KB gzipped (budget 45)
 
 **Browsers**
 
-- [ ] Chrome, Edge, Firefox and Safari (macOS and iOS); Chrome on Android
+- [x] Chrome (desktop, plus phone and tablet emulation). Edge uses the same engine.
+- [ ] Firefox, Safari (macOS and iOS) and real Android/iOS devices: **not available in this environment**. Test on real devices before launch.
 
 ## 6. Risks
 

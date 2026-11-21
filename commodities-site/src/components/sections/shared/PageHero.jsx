@@ -1,6 +1,7 @@
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
+import { BANNER_SIZES, bannerSrcSet } from '../../../utils/images';
 import './shared.css';
 
 /**
@@ -9,24 +10,28 @@ import './shared.css';
  *
  * @param {string} title Page h1
  * @param {string} [intro]
- * @param {string} image Wide (1600×700) image
+ * @param {string} [image] Wide (1600×700) image. Optional: without one, the banner is plain dark (e.g. legal pages).
  * @param {{label: string, to?: string}[]} [breadcrumbs] Last item is the current page (no `to`)
  */
 export default function PageHero({ title, intro, image, breadcrumbs = [] }) {
   return (
     <section
-      className="page-hero position-relative overflow-hidden bg-dark text-white"
+      className={`page-hero position-relative overflow-hidden bg-dark text-white${image ? '' : ' page-hero--plain'}`}
       aria-labelledby="page-title"
     >
-      <img
-        src={image}
-        alt=""
-        width="1600"
-        height="700"
-        loading="eager"
-        fetchPriority="high"
-        className="page-hero__image position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
-      />
+      {image && (
+        <img
+          src={image}
+          srcSet={bannerSrcSet(image, 800, 1600)}
+          sizes={BANNER_SIZES}
+          alt=""
+          width="1600"
+          height="700"
+          loading="eager"
+          fetchPriority="high"
+          className="page-hero__image position-absolute top-0 start-0 w-100 h-100 object-fit-cover"
+        />
+      )}
       <Container className="page-hero__content position-relative d-flex flex-column justify-content-end gap-3">
         {breadcrumbs.length > 0 && (
           <Breadcrumb

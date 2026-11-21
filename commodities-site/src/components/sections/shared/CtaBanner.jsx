@@ -2,6 +2,7 @@ import { Phone } from 'lucide-react';
 import { company } from '../../../data/company';
 import { cta } from '../../../data/content';
 import { telHref } from '../../../utils/contact';
+import { BANNER_SIZES, bannerSrcSet } from '../../../utils/images';
 import Button from '../../ui/Button';
 import Section from '../../ui/Section';
 import './shared.css';
@@ -29,6 +30,8 @@ export default function CtaBanner({
       <div className="cta-banner position-relative overflow-hidden rounded-3 bg-dark text-white">
         <img
           src={cta.image}
+          srcSet={bannerSrcSet(cta.image, 800, 1600)}
+          sizes={BANNER_SIZES}
           alt=""
           width="1600"
           height="700"

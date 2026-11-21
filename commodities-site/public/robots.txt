@@ -1,0 +1,6 @@
+# robots.txt (docs/TECHNICAL_ARCHITECTURE.md §9)
+# TODO at launch (MI-15): replace https://www.example.com with the real domain.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.example.com/sitemap.xml

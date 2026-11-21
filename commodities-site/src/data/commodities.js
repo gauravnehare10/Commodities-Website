@@ -7,17 +7,11 @@
  *   '[TBC]' until the business confirms it (MI-05).
  */
 import electricalCard from '../assets/images/commodities/electrical-waste.webp';
-import electricalWide from '../assets/images/commodities/electrical-waste-wide.webp';
 import ferrousCard from '../assets/images/commodities/ferrous-metals.webp';
-import ferrousWide from '../assets/images/commodities/ferrous-metals-wide.webp';
 import nonFerrousCard from '../assets/images/commodities/non-ferrous-metals.webp';
-import nonFerrousWide from '../assets/images/commodities/non-ferrous-metals-wide.webp';
 import paperCard from '../assets/images/commodities/paper-cardboard.webp';
-import paperWide from '../assets/images/commodities/paper-cardboard-wide.webp';
 import plasticsCard from '../assets/images/commodities/plastics.webp';
-import plasticsWide from '../assets/images/commodities/plastics-wide.webp';
 import woodCard from '../assets/images/commodities/wood.webp';
-import woodWide from '../assets/images/commodities/wood-wide.webp';
 
 export const commodities = [
   {
@@ -26,7 +20,7 @@ export const commodities = [
     summary:
       'Iron and steel scrap, from heavy structural steel and rebar to light iron and cast iron.',
     image: ferrousCard, // 800×600 card
-    imageWide: ferrousWide, // 1600×700 page header
+    imageWide: '/images/commodities/ferrous-metals-wide.webp', // 1600×700 page header in public/images (+ -sm.webp phone copy)
     imageAlt: 'A pile of old steel and iron parts ready for recycling',
     overview: [
       'Ferrous metals contain iron, which makes them magnetic. Steel is one of the most recycled materials in the world, and graded ferrous scrap is a key raw material for steelworks and foundries.',
@@ -76,7 +70,7 @@ export const commodities = [
     summary:
       'Copper, brass, aluminium, stainless steel, lead and cable, graded by alloy and purity.',
     image: nonFerrousCard,
-    imageWide: nonFerrousWide,
+    imageWide: '/images/commodities/non-ferrous-metals-wide.webp',
     imageAlt: 'A coil of shiny copper wire',
     overview: [
       'Non-ferrous metals contain little or no iron. They resist corrosion, are not magnetic and are usually worth more per tonne than ferrous scrap, so careful sorting makes a real difference to value.',
@@ -124,7 +118,7 @@ export const commodities = [
     summary:
       'Post-industrial and post-consumer plastics sorted by polymer, including PET, HDPE, PP and film.',
     image: plasticsCard,
-    imageWide: plasticsWide,
+    imageWide: '/images/commodities/plastics-wide.webp',
     imageAlt: 'Discarded plastic bottles collected for recycling',
     overview: [
       'Plastics are traded by polymer type. Clean, single-polymer material, especially when baled, is the easiest to recycle and has the most value.',
@@ -155,7 +149,7 @@ export const commodities = [
     summary:
       'Cardboard and paper grades including OCC, mixed paper, office paper and shredded paper.',
     image: paperCard,
-    imageWide: paperWide,
+    imageWide: '/images/commodities/paper-cardboard-wide.webp',
     imageAlt: 'Compressed bales of cardboard stacked on pallets',
     overview: [
       'Paper and cardboard are graded by fibre type and cleanliness. Dry, baled, well-sorted material goes back to paper mills as a raw material.',
@@ -186,7 +180,7 @@ export const commodities = [
     name: 'Wood',
     summary: 'Waste wood graded A to C for recycling, panel-board manufacture and biomass fuel.',
     image: woodCard,
-    imageWide: woodWide,
+    imageWide: '/images/commodities/wood-wide.webp',
     imageAlt: 'A large stack of wooden pallets',
     overview: [
       'In the UK, waste wood is commonly graded A to C by how clean it is. The grade decides whether it is recycled into new products or used as biomass fuel.',
@@ -218,7 +212,7 @@ export const commodities = [
     summary:
       'Commercial electrical and electronic waste (WEEE), from IT equipment to appliances and cabling.',
     image: electricalCard,
-    imageWide: electricalWide,
+    imageWide: '/images/commodities/electrical-waste-wide.webp',
     imageAlt: 'A pile of old circuit boards and electronic components',
     overview: [
       'Electrical and electronic waste (WEEE) contains valuable metals as well as hazardous parts. It must be treated by suitably permitted facilities.',

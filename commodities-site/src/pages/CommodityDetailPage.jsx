@@ -28,7 +28,10 @@ export default function CommodityDetailPage() {
 
   return (
     <>
-      <Seo title={`${commodity.name} Recycling & Trading`} description={commodity.summary} />
+      <Seo
+        title={`${commodity.name} Recycling & Trading`}
+        description={`${commodity.summary} See the grades we handle and request a quote.`}
+      />
 
       {/* 1. Page header */}
       <PageHero

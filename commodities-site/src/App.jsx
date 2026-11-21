@@ -1,13 +1,19 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout';
-import AboutPage from './pages/AboutPage';
-import CommoditiesPage from './pages/CommoditiesPage';
-import CommodityDetailPage from './pages/CommodityDetailPage';
-import ContactPage from './pages/ContactPage';
-import HomePage from './pages/HomePage';
-import NotFoundPage from './pages/NotFoundPage';
-import PrivacyPage from './pages/PrivacyPage';
-import ServicesPage from './pages/ServicesPage';
+
+/*
+ * Each page is loaded only when visited (code splitting), so the first visit downloads
+ * just the shared layout plus that page (docs/TECHNICAL_ARCHITECTURE.md §10).
+ */
+const HomePage = lazy(() => import('./pages/HomePage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const CommoditiesPage = lazy(() => import('./pages/CommoditiesPage'));
+const CommodityDetailPage = lazy(() => import('./pages/CommodityDetailPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 /** Route map: docs/WEBSITE_STRUCTURE.md §1–2 and docs/TECHNICAL_ARCHITECTURE.md §5. */
 export default function App() {

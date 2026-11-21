@@ -168,7 +168,9 @@ The form is a normal HTML form, enhanced with React for validation and a success
 
 ## 8. Images
 
-- **Location:** `src/assets/images/`, imported in data files so Vite fingerprints them for long-term caching.
+- **Location:**
+  - **Below-the-fold images** (cards, split sections, services) live in `src/assets/images/`. Data files import them, so Vite fingerprints them for long-term caching.
+  - **Banner images** (Home hero, page headers, commodity headers, which are each page's largest element) live in `public/images/` with fixed URLs, so `index.html` can preload them. Each has a phone-sized `*-sm.webp` copy, used through `srcset`; see `src/utils/images.js`.
 - **Optimisation:** done before adding the image, using Squoosh or `sharp-cli` to produce WebP at the sizes in UI_UX_GUIDELINES §5. There is no image pipeline in the build.
 - **Markup:** every `<img>` has `width`, `height`, `alt` and `loading` attributes; the hero image also has `fetchpriority="high"`.
 - **Credits:** each stock image is recorded in `docs/IMAGE_CREDITS.md` with its source, author and licence.
@@ -176,7 +178,7 @@ The form is a normal HTML form, enhanced with React for validation and a success
 ## 9. SEO
 
 - **Per-page metadata:** each page renders `<title>` and `<meta name="description">` inside its component, and React 19 moves them into `<head>`.
-- **Default metadata:** `index.html` holds default title, description, Open Graph tags and `lang="en-GB"`.
+- **Default metadata:** `index.html` holds a site-wide default title, description and Open Graph tags, plus `lang="en-GB"`, for crawlers that don't run JavaScript (e.g. social link previews). These tags carry `data-default-meta`, and `src/main.jsx` removes them when the app starts. Each page then has exactly one title and description, from its `<Seo>` component, instead of two.
 - **Crawling:** `public/sitemap.xml` (12 URLs) and `public/robots.txt` are maintained by hand.
 - **Known limitation:** as an SPA, page content is rendered by JavaScript. Google renders JavaScript, which is acceptable for this scope. If search performance later requires it, add build-time prerendering (e.g. `vite-react-ssg`) without changing components. This is a future option only.
 
@@ -186,7 +188,10 @@ The form is a normal HTML form, enhanced with React for validation and a success
 |---|---|
 | Small dependency set | Initial JS under 120 KB gzipped (React, React DOM, the router, React Bootstrap components used, and the app) |
 | CSS | Under 45 KB gzipped. The full `bootstrap.min.css` (about 30 KB gzipped) is accepted for simplicity; partial Sass imports could trim it later if needed. |
-| Route-level code splitting | Not needed at this size. Revisit only if JS exceeds the budget. |
+| Route-level code splitting | Pages load with `React.lazy`, so the first visit downloads the shared layout plus one page: about 101 KB gzipped, against 118 KB without splitting. `ScrollToTop` waits up to 3 s for `#hash` targets on lazily loaded pages. |
+| Banner preload | An inline script in `index.html` preloads the current page's banner image (with matching `imagesrcset` and `imagesizes`) before the JavaScript runs. |
+| Layout stability | `<main>` uses `display: flow-root`, so the Home hero's negative margin can't shift the page when it loads. CLS is 0 on all pages. |
+| Known limit | First paint is about 2.7 s on Lighthouse's simulated slow 4G, because the CSS (Bootstrap) and JS must load before an SPA can draw. Performance scores are 83–91. Future options, if needed: prerendering (`vite-react-ssg`, §9), and partial Bootstrap imports via Sass. |
 | Images | WebP, correctly sized, lazy-loaded below the fold |
 | Fonts | Two families; only the Latin subset weights listed are imported |
 | Caching | Hashed assets are cached for one year by the host; `index.html` is not cached |

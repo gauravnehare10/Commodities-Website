@@ -21,6 +21,10 @@ import './styles/utilities.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 
+// Remove the static default <title>/<meta> from index.html: every page renders its own via <Seo>,
+// and two title or description tags would confuse search engines.
+document.querySelectorAll('head [data-default-meta]').forEach((el) => el.remove());
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>

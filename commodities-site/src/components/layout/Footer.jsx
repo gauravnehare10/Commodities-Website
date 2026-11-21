@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { commodities } from '../../data/commodities';
 import { company } from '../../data/company';
 import { footerCompanyLinks } from '../../data/navigation';
-import { isTbc, mailHref, telHref } from '../../utils/contact';
+import { displayName, isTbc, mailHref, telHref } from '../../utils/contact';
 import Logo from './Logo';
 import './Footer.css';
 
@@ -25,7 +25,11 @@ export default function Footer() {
         {/* gx-4: row gutters must stay within the 20px phone container padding */}
         <Row className="gx-4 gy-5 site-footer__grid">
           <Col xs={12} md={6} lg={4}>
-            <Link to="/" className="site-footer__brand" aria-label="Home">
+            <Link
+              to="/"
+              className="site-footer__brand"
+              aria-label={`${displayName(company.name)} – home page`}
+            >
               <Logo tone="light" />
             </Link>
             <p className="site-footer__tagline">{company.tagline}</p>

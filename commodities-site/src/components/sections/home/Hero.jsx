@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { company } from '../../../data/company';
 import { telHref } from '../../../utils/contact';
+import { bannerSrcSet, HERO_SIZES } from '../../../utils/images';
 import Button from '../../ui/Button';
 import './home.css';
 
@@ -54,6 +55,8 @@ export default function Hero({ eyebrow, title, lead, image, imageAlt }) {
             <div className="position-relative">
               <img
                 src={image}
+                srcSet={bannerSrcSet(image, 800, 1200)}
+                sizes={HERO_SIZES}
                 alt={imageAlt}
                 width="1200"
                 height="960"

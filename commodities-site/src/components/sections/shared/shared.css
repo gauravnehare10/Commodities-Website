@@ -65,6 +65,21 @@ a.cta-banner__phone:hover {
   padding-block: clamp(var(--space-7), 6vw, var(--space-8));
 }
 
+/* No image (e.g. legal pages): shorter plain banner with a subtle copper glow */
+.page-hero--plain {
+  background-image: radial-gradient(circle at 90% 0%, rgb(156 79 37 / 0.35), transparent 50%);
+}
+
+.page-hero--plain::after {
+  display: none;
+}
+
+.page-hero--plain .page-hero__content {
+  min-height: auto;
+  padding-block: clamp(var(--space-8), 7vw, var(--space-9))
+    clamp(var(--space-6), 5vw, var(--space-8));
+}
+
 .page-hero__intro {
   max-width: 40rem;
   color: rgb(255 255 255 / 0.88);

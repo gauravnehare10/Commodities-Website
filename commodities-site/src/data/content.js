@@ -4,12 +4,14 @@
  * are marked '[TBC]' until confirmed (MI-03, MI-04, MI-11, MI-13).
  * `icon` values are lucide-react icon names.
  */
-import aboutWide from '../assets/images/hero/about-wide.webp';
-import commoditiesWide from '../assets/images/hero/commodities-wide.webp';
-import contactWide from '../assets/images/hero/contact-wide.webp';
-import homeHero from '../assets/images/hero/home.webp';
-import servicesWide from '../assets/images/hero/services-wide.webp';
 import aboutStory from '../assets/images/about/story.webp';
+
+// Banner images are in public/images (fixed URLs so index.html can preload them; each has a "-sm" phone copy).
+const homeHero = '/images/hero/home.webp';
+const aboutWide = '/images/hero/about-wide.webp';
+const commoditiesWide = '/images/hero/commodities-wide.webp';
+const servicesWide = '/images/hero/services-wide.webp';
+const contactWide = '/images/hero/contact-wide.webp';
 // About page story uses a different photo from its page header (about-wide shows the crane lorry)
 import aboutPageStory from '../assets/images/services/recycling-consultancy.webp';
 

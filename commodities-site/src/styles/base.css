@@ -95,6 +95,12 @@ strong {
   outline: none;
 }
 
+/* Stops the Home hero's negative top margin from collapsing through <main>. Without this, <main> jumps
+   up when the lazily loaded Home page replaces the loading placeholder (a layout shift / CLS). */
+.site-main {
+  display: flow-root;
+}
+
 /* ---------- Skip link ---------- */
 .skip-link {
   position: absolute;

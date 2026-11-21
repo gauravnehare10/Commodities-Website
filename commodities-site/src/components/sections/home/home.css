@@ -8,8 +8,9 @@
 
 .hero {
   /* Extends up behind the transparent header */
-  margin-top: calc(var(--header-height) * -1);
-  padding-top: calc(var(--header-height) + clamp(var(--space-6), 5vw, var(--space-8)));
+  /* Header height + its 1px bottom border, so no hairline gap shows above the hero */
+  margin-top: calc((var(--header-height) + 1px) * -1);
+  padding-top: calc(var(--header-height) + 1px + clamp(var(--space-6), 5vw, var(--space-8)));
   padding-bottom: clamp(var(--space-8), 8vw, var(--space-9));
   background:
     radial-gradient(circle at 85% 15%, rgb(233 199 168 / 0.35), transparent 45%),

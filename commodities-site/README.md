@@ -25,7 +25,9 @@ You need Node 20 or newer (see `.nvmrc`).
 
 ## Status
 
-**Phases 1–8 are complete:** setup, design foundation, layout, data and imagery, and the Home, Commodities, Services, About and Contact pages. The Privacy page shows a temporary placeholder until Phase 9.
+**Phases 1–10 are complete:** all pages are built and QA has been run. Results are in [DEVELOPMENT_ROADMAP.md §5](docs/DEVELOPMENT_ROADMAP.md). Next: Phase 11 (launch), once the business information marked `[TBC]` is supplied.
+
+**SEO files:** `public/sitemap.xml` and `public/robots.txt` use `https://www.example.com` until the real domain is known. If you add a commodity, also add its URL to `sitemap.xml`.
 
 **Enquiry form:** set `formEndpoint` in `src/data/company.js` to `'netlify'` or a Formspree URL. Until then, submissions are logged to the browser console and the thank-you message is shown. Content and images are in `src/data/` and `src/assets/images/`.
 
