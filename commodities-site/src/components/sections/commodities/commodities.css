@@ -4,6 +4,17 @@
  * One block per component, in alphabetical order.
  */
 
+/* ==================== AcceptanceLists ==================== */
+
+/* Phones: keep the coloured top line but drop the card box (shadow, corners, inner padding) */
+@media (max-width: 767.98px) {
+  .acceptance-list {
+    --bs-card-bg: transparent;
+    --bs-card-border-radius: 0;
+    --bs-box-shadow-sm: none;
+  }
+}
+
 /* ==================== EnquiryPanel ==================== */
 
 @media (min-width: 992px) {

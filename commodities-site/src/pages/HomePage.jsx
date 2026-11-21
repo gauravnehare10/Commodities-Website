@@ -20,7 +20,7 @@ import { home, process, testimonials, whyUs } from '../data/content';
 import { services } from '../data/services';
 import { reveal } from '../utils/motion';
 
-/** P-01 Home (docs/WEBSITE_STRUCTURE.md §4.1). */
+/** P-01 Home (docs/WEBSITE_STRUCTURE.md Â§4.1). */
 export default function HomePage() {
   return (
     <>
@@ -48,7 +48,7 @@ export default function HomePage() {
             </Button>
           }
         />
-        <Row className="g-4">
+        <Row className="gx-4 gy-0 gy-md-4">
           {commodities.map((c, i) => (
             <Col key={c.slug} xs={12} md={6} lg={4} {...reveal(i % 3)}>
               <CommodityCard commodity={c} />
@@ -88,7 +88,7 @@ export default function HomePage() {
             </Button>
           }
         />
-        <Row className="g-4">
+        <Row className="gx-4 gy-0 gy-md-4">
           {services.map((s, i) => (
             <Col key={s.id} xs={12} md={6} lg={4} {...reveal(i % 3)}>
               <ServiceCard service={s} />
@@ -118,7 +118,7 @@ export default function HomePage() {
         <FeatureGrid items={whyUs} />
       </Section>
 
-      {/* 8–9. Stats and testimonial (hidden until supplied, MI-11) */}
+      {/* 8â€“9. Stats and testimonial (hidden until supplied, MI-11) */}
       <StatsStrip stats={company.stats} />
       <Testimonial items={testimonials} />
 

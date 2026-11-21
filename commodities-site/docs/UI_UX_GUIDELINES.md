@@ -133,14 +133,14 @@ Components are built on **React Bootstrap** and themed to this guide. Bootstrap 
 | **Hero** (Home) | Two columns on desktop: text left (eyebrow, display headline, lead, two buttons, phone line) and a large rounded image right, with a small floating "trust" card overlapping its corner if accreditation data exists. On mobile the image sits below the text. |
 | **PageHero** | Full-width image with a dark gradient, white title, optional breadcrumb and intro. About 420px tall on desktop and 320px on mobile. |
 | **SectionHeading** | Eyebrow, H2 and an optional lead paragraph. Left-aligned by default; centred variant for grids. |
-| **CommodityCard** | 4:3 image on top (zooms to 1.04 on hover), a title, a two-line summary and a "View grades →" link. The whole card is clickable. White background with `--radius-md` and `--shadow-sm`, rising to `--shadow-md` on hover. The `compact` variant is a small image plus title. |
-| **ServiceCard** | Icon in a sand-coloured circle, title, summary and arrow link. No image. |
+| **CommodityCard** | 4:3 image on top (zooms to 1.04 on hover), a title, a two-line summary and a "View grades →" link. The whole card is clickable. White background with `--radius-md` and `--shadow-sm`, rising to `--shadow-md` on hover. The `compact` variant is a small image plus title. **Below 768px** it becomes an open list row instead of a box: a 112px square thumbnail (64px for `compact`) beside the text, no border or shadow, with thin dividers between rows. |
+| **ServiceCard** | Icon in a sand-coloured circle, title, summary and arrow link. No image. **Below 768px** it becomes an open list row: a 48px icon (light copper tint) beside the text, with dividers between rows. |
 | **Service block** (`SplitFeature`) | Services page blocks reuse `SplitFeature`: a 5:4 image, eyebrow (`Service 01`–`06`), title, paragraphs, a "What's included" heading and checklist (copper ticks), and a "Request this service" button. Image side and background alternate. |
 | **SplitFeature** | Image and text side by side, with an optional bullet list and button. |
 | **FeatureGrid** | Two to four columns of icon, title and text. |
 | **ProcessSteps** | Four numbered steps. Large copper numbers (`01`) in Manrope 800, with a thin connecting line on desktop. Vertical on mobile. |
 | **GradeList** | Table-like list: each row shows the grade name in bold, an optional code in a small sand-coloured pill, and a one-line description. Rows are divided by `--color-line`. On mobile the rows stack naturally (no table markup). |
-| **AcceptanceLists** | Two cards: "We accept" with green ticks and "We don't accept" with red crosses. |
+| **AcceptanceLists** | Two cards: "We accept" with green ticks and "We don't accept" with red crosses. Below 768px they keep only the coloured top line (no box). |
 | **TrustBar** | A row of accreditation names and numbers with a shield icon. Hidden when there is no data. |
 | **StatsStrip** | Ink background with three or four large numbers (Manrope 800, copper-light) and labels. Hidden when there is no data. |
 | **Testimonial** | Large quote in Manrope 600, with the author and company below and a copper quotation-mark accent. Hidden when there is no data. |

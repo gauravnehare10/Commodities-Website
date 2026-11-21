@@ -3,10 +3,12 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { reveal } from '../../../utils/motion';
+import './commodities.css';
 
 /**
  * "We accept" / "We don't accept" cards (docs/UI_UX_GUIDELINES.md §6).
- * Side by side from 768px, stacked on phones. Bootstrap only; no custom CSS.
+ * Side by side cards from 768px; on phones, stacked open lists under a coloured top line
+ * (box styling removed in commodities.css).
  *
  * @param {string[]} accepted
  * @param {string[]} notAccepted
@@ -18,12 +20,14 @@ export default function AcceptanceLists({ accepted = [], notAccepted = [] }) {
   ].filter((l) => l.items.length > 0);
 
   return (
-    <Row className="g-4">
+    <Row className="gx-4 gy-5 gy-md-4">
       {lists.map(({ title, items, Icon, tone }, i) => (
         <Col key={title} xs={12} md={6} {...reveal(i)}>
           {/* border-0 removes the card outline; border-top + border-3 adds only a coloured top accent */}
-          <Card className={`h-100 shadow-sm border-0 border-top border-3 border-${tone}`}>
-            <Card.Body className="p-4">
+          <Card
+            className={`acceptance-list h-100 shadow-sm border-0 border-top border-3 border-${tone}`}
+          >
+            <Card.Body className="px-0 pt-4 pb-0 p-md-4">
               <h3 className="fs-5 mb-3">{title}</h3>
               <ul className="list-unstyled d-grid gap-3 mb-0">
                 {items.map((item) => (

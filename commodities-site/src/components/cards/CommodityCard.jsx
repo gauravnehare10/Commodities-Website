@@ -6,6 +6,7 @@ import './cards.css';
 /**
  * Commodity card (docs/UI_UX_GUIDELINES.md §6), built on React Bootstrap Card.
  * The whole card is clickable via Bootstrap's `stretched-link`; only the title is announced as the link.
+ * Below 768px it becomes an open list row (thumbnail left, text right) instead of a boxed card.
  *
  * @param {object} commodity Item from src/data/commodities.js
  * @param {'h2'|'h3'} [headingLevel='h3']
@@ -17,7 +18,7 @@ export default function CommodityCard({ commodity, headingLevel = 'h3', compact 
     <Card
       className={`commodity-card h-100 overflow-hidden shadow-sm${compact ? ' commodity-card--compact' : ''}`}
     >
-      <div className="overflow-hidden bg-light">
+      <div className="commodity-card__media overflow-hidden bg-light">
         <Card.Img
           variant="top"
           src={commodity.image}
@@ -28,7 +29,10 @@ export default function CommodityCard({ commodity, headingLevel = 'h3', compact 
           className="commodity-card__image rounded-0 object-fit-cover"
         />
       </div>
-      <Card.Body className={`d-flex flex-column ${compact ? 'gap-2 p-3' : 'gap-3 p-4'}`}>
+      {/* Phones: no box padding, the card is a list row (cards.css) */}
+      <Card.Body
+        className={`d-flex flex-column ${compact ? 'gap-2 p-0 p-md-3' : 'gap-2 gap-md-3 p-0 p-md-4'}`}
+      >
         <Heading className={compact ? 'fs-6 mb-0' : 'mb-0'}>
           <Link
             to={`/commodities/${commodity.slug}`}
