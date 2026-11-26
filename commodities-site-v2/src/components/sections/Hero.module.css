@@ -1,0 +1,202 @@
+/* ---------- Home hero ---------- */
+.homeHero {
+  padding-block: var(--space-8) var(--space-9);
+  border-bottom: var(--border-hairline);
+}
+.homeGrid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .homeGrid {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-8);
+  }
+}
+.homeCopy {
+  display: grid;
+  gap: var(--space-5);
+}
+.display {
+  font-size: var(--text-display);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 800;
+  font-stretch: 108%;
+  max-width: 14ch;
+}
+.intents {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+@media (min-width: 480px) {
+  .intents {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.intent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  min-height: 72px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--text-default);
+  text-decoration: none;
+  transition:
+    background-color var(--dur-fast) ease-out,
+    color var(--dur-fast) ease-out;
+}
+.intent:hover {
+  background: var(--color-ink-900);
+  color: var(--text-inverse);
+  text-decoration: none;
+}
+.intentSell {
+  background: var(--action-primary-bg);
+  border-color: var(--action-primary-bg);
+  color: var(--action-primary-text);
+}
+.intentSell:hover {
+  background: var(--action-primary-bg-hover);
+  border-color: var(--action-primary-bg-hover);
+  color: var(--action-primary-text);
+}
+.intent svg {
+  flex: none;
+}
+.intentTitle {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-h4);
+}
+.intentText {
+  display: block;
+  font-size: var(--text-sm);
+  opacity: 0.88;
+}
+.callLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+}
+.callLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  color: var(--text-default);
+}
+
+/* Material ledger card (signature element) */
+.ledger {
+  position: relative;
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-2);
+}
+.ledgerHead {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid rgb(255 255 255 / 0.15);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-accent-inverse);
+}
+.ledgerList {
+  list-style: none;
+  padding: 0;
+}
+.ledgerRow {
+  display: grid;
+  grid-template-columns: 2.25rem 1.5rem 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding-inline: var(--space-2);
+  margin-inline: calc(var(--space-2) * -1);
+  border-bottom: 1px dashed rgb(255 255 255 / 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--text-inverse);
+  text-decoration: none;
+}
+.ledgerRow:hover {
+  background: rgb(255 255 255 / 0.06);
+  color: var(--text-inverse);
+  text-decoration: none;
+}
+.ledgerRow svg {
+  color: var(--color-patina-300);
+}
+.ledgerRow[data-group='recyclables'] svg {
+  color: var(--color-copper-400);
+}
+.ledgerNo,
+.ledgerCount {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: rgb(246 244 239 / 0.7);
+}
+.ledgerName {
+  font-weight: 500;
+}
+.regMark {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid var(--color-copper-600);
+  border-right: 2px solid var(--color-copper-600);
+}
+
+/* ---------- Page hero ---------- */
+.pageHero {
+  padding-block: var(--space-6) var(--space-8);
+  border-bottom: var(--border-hairline);
+  border-top: 4px solid transparent;
+}
+.pageHero[data-accent='metals'] {
+  border-top-color: var(--accent-metals);
+}
+.pageHero[data-accent='recyclables'] {
+  border-top-color: var(--accent-recyclables);
+}
+.pageHero[data-accent='specialist'] {
+  border-top-color: var(--accent-specialist);
+}
+.pageGrid {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+@media (min-width: 1024px) {
+  .pageGrid {
+    grid-template-columns: 7fr 4fr;
+    align-items: end;
+    gap: var(--space-8);
+  }
+}
+.pageCopy {
+  display: grid;
+  gap: var(--space-4);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}

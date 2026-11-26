@@ -1,0 +1,204 @@
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + var(--space-4));
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+body {
+  min-height: 100vh;
+  background: var(--surface-page);
+  color: var(--text-default);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+}
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+h1 {
+  font-size: var(--text-h1);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+h2 {
+  font-size: var(--text-h2);
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-size: var(--text-h3);
+  line-height: 1.25;
+}
+h4 {
+  font-size: var(--text-h4);
+  line-height: 1.3;
+}
+p {
+  text-wrap: pretty;
+}
+a {
+  color: var(--text-link);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+a:hover {
+  color: var(--text-link-hover);
+  text-decoration-thickness: 2px;
+}
+code,
+kbd {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Focus ---------- */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-white);
+}
+/* Low-specificity link colour for dark sections (component classes still win) */
+:where(.on-dark) a {
+  color: var(--text-accent-inverse);
+}
+.on-dark :focus-visible {
+  outline-color: var(--focus-ring-inverse);
+  box-shadow: none;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  top: var(--space-2);
+  left: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-ink-900);
+  color: var(--text-inverse);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+  color: var(--text-inverse);
+}
+main:focus {
+  outline: none;
+}
+
+/* ---------- Utilities ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--page-gutter));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.on-dark .eyebrow {
+  color: var(--text-accent-inverse);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  max-width: var(--prose-max);
+}
+
+.prose {
+  max-width: var(--prose-max);
+}
+.prose > * + * {
+  margin-top: var(--space-4);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ledger grid background (UI_UX_GUIDELINES §5.5) */
+.ledger-grid {
+  background-image:
+    linear-gradient(to right, rgb(213 219 219 / 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(213 219 219 / 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.on-dark.ledger-grid,
+.on-dark .ledger-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+}
+
+/* Visible marker for unsupplied business content (dev/staging only) */
+.placeholder {
+  background: var(--color-warning-50);
+  outline: 1px dashed var(--color-warning-600);
+  outline-offset: 1px;
+  border-radius: 2px;
+  color: var(--color-ink-900);
+}

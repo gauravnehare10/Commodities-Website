@@ -1,0 +1,121 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) ease-out,
+    color var(--dur-fast) ease-out,
+    border-color var(--dur-fast) ease-out;
+}
+.button:hover {
+  text-decoration: none;
+}
+.lg {
+  min-height: 52px;
+  padding: 0 var(--space-6);
+  font-size: var(--text-lg);
+}
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.primary {
+  background: var(--action-primary-bg);
+  color: var(--action-primary-text);
+}
+.primary:hover {
+  background: var(--action-primary-bg-hover);
+  color: var(--action-primary-text);
+}
+
+.secondary {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--text-default);
+}
+.secondary:hover {
+  background: var(--color-ink-900);
+  color: var(--text-inverse);
+}
+
+.tertiary {
+  padding-inline: 0;
+  min-height: auto;
+  color: var(--text-link);
+}
+
+.onDark {
+  background: var(--color-paper-50);
+  color: var(--color-ink-900);
+}
+.onDark:hover {
+  background: var(--color-white);
+  color: var(--color-ink-900);
+}
+
+.ghostOnDark {
+  background: transparent;
+  border-color: rgb(246 244 239 / 0.5);
+  color: var(--text-inverse);
+}
+.ghostOnDark:hover {
+  border-color: var(--color-paper-50);
+  color: var(--text-inverse);
+}
+
+.button[disabled],
+.button[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.arrow {
+  flex: none;
+  transition: transform var(--dur-fast) ease-out;
+}
+.button:hover .arrow,
+.arrowLink:hover .arrow {
+  transform: translateX(2px);
+}
+
+.arrowLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-link);
+}
+.arrowLink:hover {
+  text-decoration: underline;
+}
+:global(.on-dark) .arrowLink,
+:global(.on-dark) .arrowLink:hover {
+  color: var(--text-accent-inverse);
+}
+
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -36,7 +36,7 @@ The project is ready to deploy. `vercel.json` sets up the following:
 
 1. Push the repository to GitHub, GitLab or Bitbucket.
 2. In Vercel, choose **Add New → Project** and import the repository.
-3. **Set Root Directory to `commodities-site`.** The repository also contains other folders (`website/`, `docs/`), so this step is required.
+3. **Set Root Directory to `commodities-site`.** The repository also contains other folders (`commodities-site-v2/`, `docs/`), so this step is required.
 4. Leave Framework, Build Command and Output Directory as detected; they come from `vercel.json`. No environment variables are needed.
 5. Click **Deploy**. Vercel builds the site and gives you a `*.vercel.app` URL.
 
