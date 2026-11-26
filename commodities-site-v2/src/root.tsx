@@ -4,8 +4,9 @@ import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/500.css';
 import './styles/tokens.css';
 import './styles/global.css';
+import './styles/motion.css';
 
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import {
   isRouteErrorResponse,
   Links,
@@ -13,6 +14,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from 'react-router';
 import type { Route } from './+types/root';
 import { CookieBanner } from './components/layout/CookieBanner';
@@ -66,8 +68,23 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Pages fade in after client-side navigation. The first, prerendered page is shown straight away
+ * (no fade), so first paint and LCP are unaffected.
+ */
 export default function App() {
-  return <Outlet />;
+  const { pathname } = useLocation();
+  const [lastPath, setLastPath] = useState(pathname);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  if (pathname !== lastPath) {
+    setLastPath(pathname);
+    setHasNavigated(true);
+  }
+  return (
+    <div key={pathname} className={hasNavigated ? 'page-enter' : undefined}>
+      <Outlet />
+    </div>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

@@ -95,64 +95,200 @@
   color: var(--text-default);
 }
 
-/* Material ledger card (signature element) */
-.ledger {
+/* ---------- Home hero visual: cinematic slideshow + quality badge ---------- */
+.visual {
   position: relative;
-  background: var(--surface-inverse);
-  color: var(--text-inverse);
+  padding-bottom: var(--space-6);
+}
+
+/* Frame */
+.reel {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
   border-radius: var(--radius-lg);
-  padding: var(--space-5);
+  background: var(--color-ink-900);
   box-shadow: var(--shadow-2);
 }
-.ledgerHead {
+/* Shading top and bottom keeps the caption and controls readable on every photo */
+.reel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgb(15 26 28 / 0.55), transparent 28%),
+    linear-gradient(0deg, rgb(15 26 28 / 0.6), transparent 30%);
+  pointer-events: none;
+}
+
+/* Slides: stacked, the active one fades in over the previous one */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out);
+}
+.slideActive {
+  z-index: 1;
+  opacity: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Slow "Ken Burns" zoom on the showing slide; it freezes when the slideshow is paused */
+@keyframes reel-zoom {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .slideActive img {
+    animation: reel-zoom calc(var(--slide-duration) + 1.5s) var(--ease-out) both;
+  }
+  .slide:nth-child(odd) img {
+    transform-origin: 30% 60%;
+  }
+  .slide:nth-child(even) img {
+    transform-origin: 70% 35%;
+  }
+  .reel:not([data-playing]) .slideActive img {
+    animation-play-state: paused;
+  }
+}
+
+/* Caption, top left: "01 / 04  Sorting scrap metal" */
+@keyframes caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.reelCaption {
+  position: absolute;
+  z-index: 3;
+  top: var(--space-4);
+  left: var(--space-4);
+  right: var(--space-7);
   display: flex;
-  justify-content: space-between;
-  padding-bottom: var(--space-3);
-  margin-bottom: var(--space-2);
-  border-bottom: 1px solid rgb(255 255 255 / 0.15);
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-3);
+  color: var(--text-inverse);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.5);
+}
+.reelCaption :global(.tabular) {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
+  font-weight: 500;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-accent-inverse);
+  color: var(--color-patina-300);
 }
-.ledgerList {
+@media (prefers-reduced-motion: no-preference) {
+  .reelCaption {
+    animation: caption-in 600ms var(--ease-out) both;
+  }
+}
+
+/* Controls, bottom: play/pause + one progress bar per slide (like a video timeline) */
+.reelControls {
+  position: absolute;
+  z-index: 3;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  width: min(60%, 320px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.reelToggle {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgb(255 255 255 / 0.35);
+  border-radius: 999px;
+  background: rgb(15 26 28 / 0.45);
+  backdrop-filter: blur(6px);
+  color: var(--text-inverse);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) ease-out;
+}
+.reelToggle:hover {
+  background: rgb(15 26 28 / 0.75);
+}
+.reelToggle:focus-visible,
+.reelStep:focus-visible {
+  outline: 2px solid var(--color-paper-50);
+  outline-offset: 2px;
+}
+.reelProgress {
+  flex: 1;
+  display: flex;
+  gap: var(--space-2);
   list-style: none;
   padding: 0;
 }
-.ledgerRow {
-  display: grid;
-  grid-template-columns: 2.25rem 1.5rem 1fr auto;
+.reelProgress li {
+  flex: 1;
+}
+/* 24px-tall click target around a 3px bar; the faint track is ::before, the fill is the span */
+.reelStep {
+  position: relative;
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
-  min-height: 48px;
-  padding-inline: var(--space-2);
-  margin-inline: calc(var(--space-2) * -1);
-  border-bottom: 1px dashed rgb(255 255 255 / 0.12);
-  border-radius: var(--radius-sm);
-  color: var(--text-inverse);
-  text-decoration: none;
+  width: 100%;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
 }
-.ledgerRow:hover {
-  background: rgb(255 255 255 / 0.06);
-  color: var(--text-inverse);
-  text-decoration: none;
+.reelStep::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: rgb(255 255 255 / 0.3);
 }
-.ledgerRow svg {
-  color: var(--color-patina-300);
+.reelFill {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-paper-50);
+  transform: scaleX(0);
+  transform-origin: left;
 }
-.ledgerRow[data-group='recyclables'] svg {
-  color: var(--color-copper-400);
+.reelFillDone {
+  transform: scaleX(1);
 }
-.ledgerNo,
-.ledgerCount {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: rgb(246 244 239 / 0.7);
+@keyframes bar-grow {
+  to {
+    transform: scaleX(1);
+  }
 }
-.ledgerName {
-  font-weight: 500;
+/* The bar's animation drives the slideshow: when it ends, the next slide shows (Hero.tsx) */
+.reelFillActive {
+  animation: bar-grow var(--slide-duration) linear forwards;
+  animation-play-state: paused;
 }
+.reelFillActive[data-playing] {
+  animation-play-state: running;
+}
+
+/* Copper registration corner (brand signature) */
 .regMark {
   position: absolute;
   top: -10px;
@@ -161,6 +297,71 @@
   height: 20px;
   border-top: 2px solid var(--color-copper-600);
   border-right: 2px solid var(--color-copper-600);
+}
+
+/* Quality badge, overlapping the frame's bottom-right edge */
+.badge {
+  position: absolute;
+  z-index: 4;
+  right: var(--space-5);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 62%;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--surface-inverse);
+  color: var(--text-inverse);
+  box-shadow: 0 16px 32px -14px rgb(15 26 28 / 0.55);
+}
+.badge svg {
+  flex: none;
+  color: var(--color-patina-300);
+}
+.badgeTitle {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  line-height: 1.25;
+}
+.badgeText {
+  display: block;
+  font-size: var(--text-xs);
+  color: rgb(246 244 239 / 0.75);
+}
+
+/* Phones: controls span the frame; badge sits below it on the left */
+@media (max-width: 639.98px) {
+  .reelControls {
+    width: auto;
+    right: var(--space-4);
+    bottom: var(--space-3);
+  }
+  .badge {
+    right: auto;
+    left: var(--space-3);
+    max-width: calc(100% - var(--space-6));
+    padding: var(--space-2) var(--space-3);
+  }
+  .visual {
+    padding-bottom: var(--space-7);
+  }
+}
+
+/* Tablet: wider frame */
+@media (min-width: 640px) and (max-width: 1023.98px) {
+  .reel {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Desktop: the frame matches the photos' 5:4 shape */
+@media (min-width: 1024px) {
+  .reel {
+    aspect-ratio: 5 / 4;
+  }
 }
 
 /* ---------- Page hero ---------- */

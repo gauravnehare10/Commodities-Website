@@ -16,10 +16,23 @@
   transition:
     background-color var(--dur-fast) ease-out,
     color var(--dur-fast) ease-out,
-    border-color var(--dur-fast) ease-out;
+    border-color var(--dur-fast) ease-out,
+    box-shadow var(--dur-med) var(--ease-out),
+    transform var(--dur-med) var(--ease-out);
 }
 .button:hover {
   text-decoration: none;
+}
+/* Filled buttons lift slightly on hover and press back down (no motion when --dur-* are 0) */
+.primary:hover,
+.onDark:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px -10px rgb(15 26 28 / 0.55);
+}
+.primary:active,
+.onDark:active {
+  transform: none;
+  box-shadow: none;
 }
 .lg {
   min-height: 52px;

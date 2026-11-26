@@ -13,6 +13,7 @@ import { isDraftMode } from '~/lib/env';
 import styles from './page.module.css';
 import { CommodityGrid, IndustryStrip, ServiceCards } from '~/components/sections/Cards';
 import { HeroIntent } from '~/components/sections/Hero';
+import { MaterialTicker } from '~/components/sections/Ticker';
 import { ArrowLink } from '~/components/ui/Button';
 import {
   accreditations,
@@ -46,6 +47,7 @@ export default function Home() {
   return (
     <>
       <HeroIntent />
+      <MaterialTicker />
 
       {accreditations.length > 0 ? (
         <Section tight tone="raised">
@@ -61,7 +63,7 @@ export default function Home() {
           lead="Choose a category to see the grades, what’s accepted and how to get a price."
           action={<ArrowLink to="/commodities">All commodities</ArrowLink>}
         />
-        <CommodityGrid categories={categories} />
+        <CommodityGrid categories={categories} tiles />
       </Section>
 
       <Section tone="raised" labelledBy="process-title">

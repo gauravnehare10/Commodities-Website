@@ -29,6 +29,12 @@ Node 22 is required (see `.nvmrc`).
 
 - **React Router v7 in framework mode** with `ssr: false` and `prerender`. Every route, including each commodity and service page, becomes a real HTML file at build time, then hydrates.
 - **Content lives in `src/content/`** as typed data files. Pages are generated from data: adding a commodity, material, service, FAQ or glossary term needs no component changes.
+- **Motion** is in `src/styles/motion.css`:
+  - **Hero text:** fades and rises in as the page loads.
+  - **Scroll reveals:** sections rise in as you scroll, using CSS scroll-driven animations with no JavaScript. Browsers without support just show the content.
+  - **Page fade:** pages fade in after client-side navigation.
+
+  The Home hero slideshow (`Hero.tsx`) and the materials ticker (`Ticker.tsx`) both have pause buttons. All motion is off when the visitor's device asks for reduced motion.
 - **Design tokens** are in `src/styles/tokens.css`. Swap the primitive colour and font values there to apply the client brand.
 - **Forms** (`/quote` multi-step, `/contact`) use React Hook Form with `zod/mini` schemas that are shared with the server-side handler in `server/submit-handler.ts` (deployed as the Vercel Function `api/submit.ts`).
 
@@ -79,7 +85,7 @@ With `SITE_ENV=production` the build fails if any active item:
 
 Production builds also:
 
-- drop the draft banner and amber highlights
+- drop the amber placeholder highlights (the "draft content" banner only ever shows on the local dev server)
 - drop the `noindex` meta tag
 - emit an indexable robots.txt
 
@@ -91,7 +97,7 @@ Production builds also:
 
 | Variable | When | Notes |
 |---|---|---|
-| `SITE_ENV` | build | `staging` while content has placeholders (draft banner, `noindex`). `production` only once all content is confirmed; the build fails otherwise. |
+| `SITE_ENV` | build | `staging` while content has placeholders (amber highlights, `noindex`). `production` only once all content is confirmed; the build fails otherwise. |
 | `PUBLIC_SITE_URL` | build | Your domain, e.g. `https://www.example.com`. If unset, the project's `*.vercel.app` production address is used for canonical links and the sitemap. |
 | `VITE_TURNSTILE_SITE_KEY` | build | Optional. Spam check widget; hidden when empty. |
 | `EMAIL_PROVIDER_API_KEY` | function | Resend API key. Without the email variables, the form replies "not configured" (503). |
@@ -114,7 +120,7 @@ Build command `npm run build`, output `build/client`. Cloudflare uses `functions
 ## Not done yet
 
 - **Visual and browser QA.** The build was checked by type, lint, unit tests, prerender output and bundle budget, not yet in real browsers or with screen readers. Playwright e2e/axe and Lighthouse CI (TECHNICAL_ARCHITECTURE §12) are not set up.
-- **Photography.** There are no images; cards use CSS material textures until MI-15 is resolved.
+- **Photography.** Cards and the Home hero use interim Unsplash stock photos until the business supplies its own (MI-15). See [IMAGE_CREDITS.md](IMAGE_CREDITS.md) for credits and how to replace them.
 - **Analytics.** Events are typed and consent-gated, but no provider is wired in (MI-22).
 - **Logo.** The interim wordmark is in `src/components/layout/Logo.tsx` (MI-02).
 - **CSP.** It needs `'unsafe-inline'` for scripts because of React Router's inline hydration data.

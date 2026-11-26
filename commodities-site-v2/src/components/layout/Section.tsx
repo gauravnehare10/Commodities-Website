@@ -51,7 +51,7 @@ type HeaderProps = {
 
 export function SectionHeader({ id, eyebrow, title, lead, action, as: H = 'h2' }: HeaderProps) {
   return (
-    <div className={styles.header}>
+    <div className={styles.header} data-reveal="">
       <div className={styles.headerText}>
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <H id={id}>{title}</H>

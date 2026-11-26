@@ -11,7 +11,7 @@ import styles from './Blocks.module.css';
 export function ProcessSteps({ steps }: { steps: ProcessStep[] }) {
   if (steps.length === 0) return null;
   return (
-    <ol className={styles.steps}>
+    <ol className={styles.steps} data-reveal-stagger="">
       {steps.map((s, i) => (
         <li key={s.title} className={styles.step}>
           <span className={styles.stepNo} aria-hidden="true">
@@ -65,7 +65,7 @@ export function TrustStrip({ items }: { items: Accreditation[] }) {
 export function Testimonials({ items }: { items: Testimonial[] }) {
   if (items.length === 0) return null;
   return (
-    <ul role="list" className={styles.quotes}>
+    <ul role="list" className={styles.quotes} data-reveal-stagger="">
       {items.map((t) => (
         <li key={t.author + t.quote.slice(0, 12)}>
           <figure className={styles.quote}>
@@ -101,7 +101,7 @@ export function CtaBand({
 }: CtaProps) {
   return (
     <section className={cx(styles.cta, 'on-dark', 'ledger-grid')} aria-labelledby="cta-title">
-      <div className={cx('container', styles.ctaInner)}>
+      <div className={cx('container', styles.ctaInner)} data-reveal="">
         <div className={styles.ctaCopy}>
           <h2 id="cta-title">{title}</h2>
           <p>{text}</p>
