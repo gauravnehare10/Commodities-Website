@@ -20,7 +20,7 @@ import {
   servicesBySlugs,
 } from '~/content';
 import { categoryGroupLabels } from '~/content/model';
-import { isDraftMode } from '~/lib/env';
+import { showDraftNotes } from '~/lib/env';
 import { breadcrumbJsonLd, buildMeta, compact, faqJsonLd } from '~/lib/seo';
 import type { Route } from './+types/commodities.$category';
 import styles from './page.module.css';
@@ -100,7 +100,7 @@ export default function CommodityCategoryPage({ params }: Route.ComponentProps) 
 
       <InPageNav items={nav} />
 
-      {isDraftMode && !c.confirmed && (
+      {showDraftNotes && !c.confirmed && (
         <div className="container" style={{ paddingTop: 'var(--space-6)' }}>
           <DraftNotice>
             This category is a <strong>candidate</strong> from the industry research and has not

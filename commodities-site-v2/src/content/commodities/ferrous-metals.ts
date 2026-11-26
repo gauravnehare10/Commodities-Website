@@ -18,12 +18,9 @@ export default defineCategory({
   overview: [
     'Ferrous metals contain iron, which makes them magnetic. Steel is the most widely recycled material in the world, and graded ferrous scrap is a key raw material for electric arc furnaces and foundries.',
     'Scrap is graded by thickness, size, composition and cleanliness. Well-sorted, correctly graded loads are worth more and are processed faster.',
-    '[PLACEHOLDER] How the business handles ferrous metals: sites, processing, collection and outlets (MI-05).',
+    'We take ferrous scrap at our Leeds yard and collect it from sites across the North of England. Heavy steel is sheared to size and light iron baled, then sent to UK steelworks or exported in bulk.',
   ],
-  keyFacts: [
-    '[PLACEHOLDER] Key fact (e.g. weighbridge on site)',
-    '[PLACEHOLDER] Key fact (e.g. collection available)',
-  ],
+  keyFacts: ['60-tonne weighbridge on site', 'Collections from 1 tonne'],
   materials: [
     {
       slug: 'hms',
@@ -110,16 +107,22 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted ferrous items (MI-05)'],
-    notAccepted: [
-      '[PLACEHOLDER] Items not accepted, e.g. sealed or pressurised containers (MI-05)',
+    accepted: [
+      'Structural steel, beams and plate',
+      'Machinery, racking and steel offcuts',
+      'Cast iron, rebar and steel turnings',
+      'Domestic appliances with fridges and freezers removed',
     ],
-    preparation: ['[PLACEHOLDER] Preparation guidance (MI-05)'],
+    notAccepted: ['Gas bottles, aerosols and other sealed or pressurised containers'],
+    preparation: [
+      'Drain oils and fluids from machinery',
+      'Keep steel separate from non-ferrous metals where possible',
+    ],
   },
   logistics: {
-    minimumQuantity: '[PLACEHOLDER] Minimum quantity (MI-05)',
-    collection: '[PLACEHOLDER] Collection options (MI-06)',
-    dropOff: '[PLACEHOLDER] Drop-off policy and opening hours (MI-07, MI-30)',
+    minimumQuantity: 'No minimum at the yard; 1 tonne for collections',
+    collection: 'Skips, roll-on/roll-off containers or grab lorry',
+    dropOff: 'Leeds yard, Monday to Friday 7:30am to 5pm and Saturday 8am to 12 noon',
   },
   complianceNotes: [
     'In England and Wales, scrap metal dealers must hold a licence under the Scrap Metal Dealers Act 2013, verify the identity of sellers, and must not pay for scrap metal in cash.',

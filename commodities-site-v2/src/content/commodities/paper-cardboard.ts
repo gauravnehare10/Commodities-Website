@@ -12,7 +12,7 @@ export default defineCategory({
     'Fibre grades including OCC (old corrugated cardboard), mixed paper, office paper, newspapers and shredded paper.',
   overview: [
     'Paper and cardboard ("fibre") is graded by fibre type and cleanliness. Dry, baled, well-sorted fibre goes back into paper mills as a raw material.',
-    '[PLACEHOLDER] How the business handles fibre (MI-05).',
+    'Cardboard and paper are baled at our yard and sent to UK and European paper mills.',
   ],
   materials: [
     {
@@ -59,9 +59,13 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted fibre (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Not accepted, e.g. wet or food-contaminated fibre (MI-05)'],
-    preparation: ['[PLACEHOLDER] Baling and storage guidance (MI-05)'],
+    accepted: [
+      'Cardboard boxes and packaging',
+      'Office and mixed paper',
+      'Newspapers and magazines',
+    ],
+    notAccepted: ['Wet or food-contaminated paper and card', 'Waxed or plastic-coated card'],
+    preparation: ['Flatten boxes and keep them dry', 'We can supply a baler for regular volumes'],
   },
   relatedServices: ['collection-haulage', 'waste-brokerage', 'commodity-trading'],
   faqs: ['mixed-loads', 'minimum-quantity'],

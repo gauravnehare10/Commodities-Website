@@ -12,7 +12,7 @@ export default defineCategory({
     'Bulk loads of dry mixed recycling, POPs waste, glass, plasterboard and other mixed streams.',
   overview: [
     'Bulk and mixed waste streams need the right outlet, transport and paperwork. Some streams, such as waste containing persistent organic pollutants (POPs), have specific legal treatment requirements.',
-    '[PLACEHOLDER] How the business handles bulk and mixed waste (MI-05).',
+    'We arrange collection and compliant outlets for bulk and mixed waste, recovering recyclable material wherever we can.',
   ],
   materials: [
     {
@@ -50,8 +50,12 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted streams (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Not accepted (MI-05)'],
+    accepted: [
+      'Dry mixed recycling',
+      'Glass and plasterboard',
+      'POPs waste such as upholstered seating',
+    ],
+    notAccepted: ['Asbestos', 'Clinical and liquid waste'],
   },
   complianceNotes: [
     'Waste containing POPs must be kept separate and sent for destruction. It must not be mixed with other waste.',

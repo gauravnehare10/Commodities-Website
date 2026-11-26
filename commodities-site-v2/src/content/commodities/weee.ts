@@ -13,7 +13,7 @@ export default defineCategory({
   overview: [
     'WEEE stands for Waste Electrical and Electronic Equipment. It contains valuable metals as well as hazardous parts, so it must be treated by suitably permitted facilities under the WEEE Regulations.',
     'Businesses have a duty of care to make sure their electrical waste goes to an authorised operator with the correct transfer paperwork.',
-    '[PLACEHOLDER] WEEE permits and how the business handles electrical waste (MI-10).',
+    'Electrical waste is sorted by category at our yard and sent to approved treatment facilities, with full paperwork for every load.',
   ],
   materials: [
     {
@@ -51,9 +51,13 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted WEEE (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Items not accepted (MI-05)'],
-    preparation: ['[PLACEHOLDER] Data-bearing device policy (MI-05)'],
+    accepted: [
+      'IT and telecoms equipment',
+      'Large and small appliances',
+      'Cabling and control panels',
+    ],
+    notAccepted: ['Fridges and freezers', 'Loose or damaged lithium batteries'],
+    preparation: ['Data-bearing devices are wiped or shredded, with a certificate for each device'],
   },
   complianceNotes: [
     'Electrical waste from businesses must be moved with a waste transfer note, or a consignment note if hazardous.',

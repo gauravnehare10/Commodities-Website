@@ -4,7 +4,7 @@ import type { ProcessStep } from './model';
 export const home = {
   eyebrow: 'Scrap metal · Recyclables · Secondary commodities',
   headline: 'Materials, graded and moved with precision.',
-  lead: '[PLACEHOLDER] One or two sentences on what the business does and for whom (MI-03, MI-04).',
+  lead: 'We buy, process and trade scrap metal and recyclable materials across the North of England, collecting from manufacturers, contractors and waste managers and supplying graded material to mills at home and overseas.',
   confirmed: false,
 };
 

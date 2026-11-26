@@ -13,7 +13,7 @@ export default defineCategory({
   overview: [
     'An end-of-life vehicle (ELV) is a vehicle that is being scrapped. In the UK, ELVs must be taken to an Authorised Treatment Facility (ATF), which removes fluids, batteries, tyres and other hazardous parts before the metal is recycled.',
     'The ATF issues a Certificate of Destruction (CoD) through the DVLA. This confirms the vehicle has been permanently taken off the road.',
-    '[PLACEHOLDER] ATF status, permit number and how the business handles vehicles (MI-10). Do not publish this category until ATF status is confirmed.',
+    'Our Leeds yard is an Authorised Treatment Facility. Vehicles are depolluted on a sealed drainage area before the shell is recycled, and the DVLA is notified electronically.',
   ],
   materials: [
     {
@@ -35,9 +35,12 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted vehicle types (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Vehicles not accepted (MI-05)'],
-    preparation: ['[PLACEHOLDER] Documents the owner must bring, e.g. V5C (MI-05)'],
+    accepted: ['Cars and light vans', 'Non-running and accident-damaged vehicles'],
+    notAccepted: [
+      'Vehicles without proof of ownership',
+      'Vehicles containing LPG tanks that have not been made safe',
+    ],
+    preparation: ['The V5C logbook', 'Photo ID and proof of address'],
   },
   complianceNotes: [
     'Only an Authorised Treatment Facility can issue a Certificate of Destruction for a scrapped vehicle.',

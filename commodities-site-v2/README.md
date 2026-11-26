@@ -2,7 +2,12 @@
 
 A static, prerendered React + Vite site for a scrap metal and secondary commodities business, built from the specs in [`../docs`](../docs).
 
-> **Status: draft build.** All company-specific content is placeholder or unconfirmed. In development and staging, placeholders are highlighted in amber. A production build **refuses to run** until they're replaced (see [Going to production](#going-to-production)).
+> **Status: demo build.** Company-specific content is **demo data** for a fictional company, "Corvane Metals & Recycling", in Leeds.
+> - **Phone:** an Ofcom drama number (0113 496 0xxx).
+> - **Email:** uses the reserved `example.com` domain.
+> - **Not included:** permit numbers and testimonials.
+>
+> Categories and services are still marked `confirmed: false`, so a production build **refuses to run** until the real business details replace the demo ones (see [Going to production](#going-to-production)). Editor notes (draft banner, "awaiting confirmation" notices) show only on the local dev server.
 
 ## Quick start
 

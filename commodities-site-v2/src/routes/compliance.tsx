@@ -5,7 +5,7 @@ import { PageHero } from '~/components/sections/Hero';
 import { GlossaryText } from '~/components/content/GlossaryText';
 import { LinkButton } from '~/components/ui/Button';
 import { accreditations } from '~/content';
-import { isDraftMode } from '~/lib/env';
+import { showDraftNotes } from '~/lib/env';
 import { breadcrumbJsonLd, buildMeta } from '~/lib/seo';
 import type { Route } from './+types/compliance';
 import styles from './page.module.css';
@@ -53,7 +53,7 @@ export default function CompliancePage() {
         }
       />
 
-      {(regulated.length > 0 || isDraftMode) && (
+      {(regulated.length > 0 || showDraftNotes) && (
         <Section labelledBy="licences">
           <SectionHeader id="licences" eyebrow="Regulatory" title="Licences & permits" />
           {regulated.length > 0 ? (
@@ -106,7 +106,7 @@ export default function CompliancePage() {
         </Section>
       )}
 
-      {(certs.length > 0 || isDraftMode) && (
+      {(certs.length > 0 || showDraftNotes) && (
         <Section tone="raised" labelledBy="accreditations">
           <SectionHeader
             id="accreditations"
@@ -154,7 +154,7 @@ export default function CompliancePage() {
         </div>
       </Section>
 
-      {isDraftMode && (
+      {showDraftNotes && (
         <Section tone="raised" labelledBy="policies">
           <SectionHeader id="policies" eyebrow="Policies" title="Company policies" />
           <DraftNotice>

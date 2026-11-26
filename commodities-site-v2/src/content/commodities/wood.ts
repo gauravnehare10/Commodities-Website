@@ -11,7 +11,7 @@ export default defineCategory({
   summary: 'Waste wood graded A to C for recycling, panel-board manufacture and biomass fuel.',
   overview: [
     'In the UK, waste wood is commonly graded A to C by how clean it is. The grade decides whether it can become animal bedding, panel board or biomass fuel. Hazardous wood, such as wood treated with creosote or CCA, is handled separately.',
-    '[PLACEHOLDER] How the business handles wood (MI-05).',
+    'Waste wood is graded on arrival and sent for recycling, panel-board manufacture or biomass fuel.',
   ],
   materials: [
     {
@@ -42,8 +42,12 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted wood grades (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Not accepted, e.g. hazardous treated wood (MI-05)'],
+    accepted: [
+      'Pallets and packaging timber (Grade A)',
+      'Construction and demolition timber (Grade B)',
+      'Chipboard, MDF and plywood (Grade C)',
+    ],
+    notAccepted: ['Wood treated with creosote or other hazardous preservatives'],
   },
   relatedServices: ['collection-haulage', 'waste-brokerage'],
   faqs: ['mixed-loads'],

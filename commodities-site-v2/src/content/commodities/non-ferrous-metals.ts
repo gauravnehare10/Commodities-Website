@@ -13,9 +13,9 @@ export default defineCategory({
   overview: [
     'Non-ferrous metals contain little or no iron. They resist corrosion, are not magnetic and are worth far more per tonne than ferrous scrap, so careful sorting has a big effect on value.',
     'Value depends on the alloy, how clean the metal is, and whether it is mixed with other materials such as insulation, solder, paint or attached steel.',
-    '[PLACEHOLDER] How the business handles non-ferrous metals (MI-05).',
+    'Non-ferrous metals are sorted by alloy in our covered bay, tested where needed and sold to UK refiners and overseas smelters.',
   ],
-  keyFacts: ['[PLACEHOLDER] Key fact', '[PLACEHOLDER] Key fact'],
+  keyFacts: ['Sorted by alloy in a covered bay', 'Handheld analyser for alloy testing'],
   materials: [
     {
       slug: 'dry-bright-wire',
@@ -115,14 +115,23 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted non-ferrous items (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Items not accepted (MI-05)'],
-    preparation: ['[PLACEHOLDER] Preparation guidance, e.g. keep alloys separate (MI-05)'],
+    accepted: [
+      'Copper, brass and bronze',
+      'Aluminium sections, sheet, cans and wheels',
+      'Insulated cable',
+      'Stainless steel, lead and zinc',
+      'Lead-acid batteries',
+    ],
+    notAccepted: ['Radioactive or contaminated items', 'Sealed units containing refrigerant gas'],
+    preparation: [
+      'Keep different alloys separate',
+      'Remove steel fixings and plastic where you can',
+    ],
   },
   logistics: {
-    minimumQuantity: '[PLACEHOLDER] Minimum quantity (MI-05)',
-    collection: '[PLACEHOLDER] Collection options (MI-06)',
-    dropOff: '[PLACEHOLDER] Drop-off policy (MI-07, MI-30)',
+    minimumQuantity: 'No minimum at the yard; 250 kg for collections',
+    collection: 'Lockable cages, stillages or bulk bags',
+    dropOff: 'Leeds yard, Monday to Friday 7:30am to 5pm and Saturday 8am to 12 noon',
   },
   complianceNotes: [
     'In England and Wales, scrap metal dealers must verify the identity of sellers and must not pay for scrap metal in cash (Scrap Metal Dealers Act 2013).',

@@ -11,7 +11,7 @@ import { LinkButton } from '~/components/ui/Button';
 import { ContentText } from '~/components/ui/ContentText';
 import { categoriesBySlugs, defaultProcess, faqsByIds, getService, industries } from '~/content';
 import { serviceGroupLabels } from '~/content/model';
-import { isDraftMode } from '~/lib/env';
+import { showDraftNotes } from '~/lib/env';
 import { breadcrumbJsonLd, buildMeta, compact, faqJsonLd, serviceJsonLd } from '~/lib/seo';
 import type { Route } from './+types/services.$service';
 import { NotFoundContent } from './not-found';
@@ -63,7 +63,7 @@ export default function ServicePage({ params }: Route.ComponentProps) {
         }
       />
 
-      {isDraftMode && !s.confirmed && (
+      {showDraftNotes && !s.confirmed && (
         <div className="container" style={{ paddingTop: 'var(--space-6)' }}>
           <DraftNotice>
             Candidate service from the industry research, not yet confirmed by the business (MI-06).

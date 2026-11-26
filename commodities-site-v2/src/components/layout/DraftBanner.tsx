@@ -1,5 +1,5 @@
 import { TriangleAlert } from 'lucide-react';
-import { isDraftMode, SITE_ENV } from '~/lib/env';
+import { showDraftNotes, SITE_ENV } from '~/lib/env';
 import styles from './DraftBanner.module.css';
 
 /**
@@ -7,7 +7,7 @@ import styles from './DraftBanner.module.css';
  * (`npm run dev`), never on a deployed site, whatever SITE_ENV it was built with.
  */
 export function DraftBanner() {
-  if (!import.meta.env.DEV || !isDraftMode) return null;
+  if (!showDraftNotes) return null;
   return (
     <div className={styles.banner} role="note">
       <TriangleAlert size={16} aria-hidden="true" />
@@ -19,9 +19,9 @@ export function DraftBanner() {
   );
 }
 
-/** Inline notice where a whole section is waiting for business data. Draft mode only. */
+/** Inline notice where a whole section is waiting for business data. Local dev server only. */
 export function DraftNotice({ children }: { children: React.ReactNode }) {
-  if (!isDraftMode) return null;
+  if (!showDraftNotes) return null;
   return (
     <div className={styles.notice} role="note">
       <TriangleAlert size={18} aria-hidden="true" />

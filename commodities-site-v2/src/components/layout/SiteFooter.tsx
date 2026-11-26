@@ -23,7 +23,9 @@ export function SiteFooter() {
         <div className={styles.brand}>
           <Logo inverse />
           <p className={styles.blurb}>
-            <ContentText>{'[PLACEHOLDER] One-line company description (MI-03).'}</ContentText>
+            <ContentText>
+              {'Scrap metal, recycling and secondary commodities from our yard in Leeds.'}
+            </ContentText>
           </p>
           <PhoneLink className={styles.contactLine} location="footer" />
           <p className={styles.contactLine}>

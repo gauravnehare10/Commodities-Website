@@ -1,5 +1,5 @@
 import { siteConfig } from '~/content';
-import { isDraftMode } from '~/lib/env';
+import { showDraftNotes } from '~/lib/env';
 import styles from './Logo.module.css';
 
 /**
@@ -21,8 +21,9 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
           stroke="currentColor"
           strokeWidth="2"
         />
+        {/* "CM" monogram (Corvane Metals, demo company) */}
         <path
-          d="M8 22V10h6M8 16h5M18 22V10l6 12V10"
+          d="M14 10H8v12h6M18 22V10l3 6 3-6v12"
           fill="none"
           stroke="currentColor"
           strokeWidth="2.25"
@@ -31,7 +32,7 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
       </svg>
       <span className={styles.text}>
         {name}
-        {isDraftMode && siteConfig.companyName.startsWith('[PLACEHOLDER]') && (
+        {showDraftNotes && siteConfig.companyName.startsWith('[PLACEHOLDER]') && (
           <span className={styles.draft}>logo TBC</span>
         )}
       </span>

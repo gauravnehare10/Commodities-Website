@@ -12,7 +12,7 @@ export default defineCategory({
     'Post-industrial and post-consumer plastics sorted by polymer: PET, HDPE, PP, LDPE film, PVC, PS and mixed rigids.',
   overview: [
     'Plastics are traded by polymer type. Single-polymer, clean and baled material is easiest to recycle and has the most value. Mixed or contaminated plastic often needs further sorting.',
-    '[PLACEHOLDER] How the business handles plastics (MI-05).',
+    'Plastics are sorted by polymer, baled and sent to UK and European reprocessors.',
   ],
   materials: [
     {
@@ -73,9 +73,19 @@ export default defineCategory({
     },
   ],
   acceptance: {
-    accepted: ['[PLACEHOLDER] Accepted plastics (MI-05)'],
-    notAccepted: ['[PLACEHOLDER] Plastics not accepted (MI-05)'],
-    preparation: ['[PLACEHOLDER] Baling and contamination guidance (MI-05)'],
+    accepted: [
+      'Clean LDPE film and shrink-wrap',
+      'HDPE and PP drums, crates and pallets',
+      'PET bottles',
+    ],
+    notAccepted: [
+      'Plastics contaminated with food or chemicals',
+      'Mixed plastic and metal assemblies',
+    ],
+    preparation: [
+      'Keep polymers separate where possible',
+      'Remove labels and tape from film if you can',
+    ],
   },
   relatedServices: ['collection-haulage', 'waste-brokerage', 'commodity-trading'],
   faqs: ['mixed-loads', 'minimum-quantity'],

@@ -9,7 +9,7 @@ import {
   Testimonials,
   TrustStrip,
 } from '~/components/sections/Blocks';
-import { isDraftMode } from '~/lib/env';
+import { showDraftNotes } from '~/lib/env';
 import styles from './page.module.css';
 import { CommodityGrid, IndustryStrip, ServiceCards } from '~/components/sections/Cards';
 import { HeroIntent } from '~/components/sections/Hero';
@@ -104,7 +104,7 @@ export default function Home() {
         <IndustryStrip industries={industries} />
       </Section>
 
-      {(hasCoverage || isDraftMode) && (
+      {(hasCoverage || showDraftNotes) && (
         <Section labelledBy="coverage-title">
           <SectionHeader id="coverage-title" eyebrow="Coverage" title="Where we operate" />
           {hasCoverage ? (
