@@ -22,9 +22,33 @@
     height: 60px;
   }
 }
+/* The logo may shrink so the call and menu buttons always stay on screen */
 .logoLink {
+  flex: 0 1 auto;
+  min-width: 0;
   text-decoration: none;
-  flex: none;
+}
+@media (max-width: 1023.98px) {
+  .bar {
+    gap: var(--space-3);
+  }
+}
+/* Desktop: the logo keeps its full width; on small laptops the menu tightens instead */
+@media (min-width: 1024px) {
+  .logoLink {
+    flex: none;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .bar {
+    gap: var(--space-4);
+  }
+  .navButton {
+    padding-inline: var(--space-2);
+  }
+  .actions {
+    gap: var(--space-3);
+  }
 }
 
 /* ---- Desktop nav ---- */
@@ -272,6 +296,15 @@
 @media (min-width: 1024px) {
   .actions .iconBtn {
     display: none;
+  }
+}
+/* Small laptops: the phone number becomes the compact call button so everything fits */
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  .phone {
+    display: none;
+  }
+  .actions a.iconBtn {
+    display: inline-grid;
   }
 }
 

@@ -18,12 +18,31 @@
 }
 .text {
   display: grid;
+  min-width: 0;
+  line-height: 1.1;
+}
+.name {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   letter-spacing: -0.01em;
-  line-height: 1.1;
   font-stretch: 112%;
+}
+/* Rest of the company name, e.g. "METALS & RECYCLING" */
+.descriptor {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-muted);
+}
+.logo[data-inverse] .descriptor {
+  color: rgb(246 244 239 / 0.75);
 }
 .draft {
   font-family: var(--font-mono);

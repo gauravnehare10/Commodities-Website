@@ -8,6 +8,8 @@ import styles from './Logo.module.css';
  */
 export function Logo({ inverse = false }: { inverse?: boolean }) {
   const name = siteConfig.companyName.replace('[PLACEHOLDER] ', '');
+  const [first, ...others] = name.split(' ');
+  const rest = others.join(' ');
   return (
     <span className={styles.logo} data-inverse={inverse || undefined}>
       <svg className={styles.mark} viewBox="0 0 32 32" aria-hidden="true">
@@ -30,8 +32,10 @@ export function Logo({ inverse = false }: { inverse?: boolean }) {
           strokeLinecap="square"
         />
       </svg>
+      {/* Two-line lockup: first word large, the rest as a small descriptor, so long names fit on phones */}
       <span className={styles.text}>
-        {name}
+        <span className={styles.name}>{first}</span>
+        {rest && <span className={styles.descriptor}>{rest}</span>}
         {showDraftNotes && siteConfig.companyName.startsWith('[PLACEHOLDER]') && (
           <span className={styles.draft}>logo TBC</span>
         )}
