@@ -381,6 +381,8 @@
 }
 .pageGrid {
   display: grid;
+  /* minmax(0, 1fr): the column never grows wider than the screen to fit its content */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-6);
   margin-top: var(--space-6);
 }

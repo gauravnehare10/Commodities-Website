@@ -23,6 +23,14 @@
 .button:hover {
   text-decoration: none;
 }
+/* Phones: long labels wrap instead of pushing the page wider than the screen */
+@media (max-width: 479.98px) {
+  .button {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}
 /* Filled buttons lift slightly on hover and press back down (no motion when --dur-* are 0) */
 .primary:hover,
 .onDark:hover {

@@ -17,8 +17,10 @@
     max-width: 480px;
   }
 }
+/* minmax(0, 1fr) lets the card shrink to the screen; plain 1fr would grow to fit the buttons */
 .inner {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-4);
   padding: var(--space-5);
 }
@@ -27,6 +29,21 @@
 }
 .actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2);
+}
+.actions > * {
+  min-width: 0;
+  padding-inline: var(--space-3);
+  white-space: normal;
+  text-align: center;
+}
+/* Narrow phones: buttons stacked, full width */
+@media (max-width: 419.98px) {
+  .inner {
+    padding: var(--space-4);
+  }
+  .actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
